@@ -1,3 +1,7 @@
+//
+// Beholder denne fila her enn så lenge for referanse
+//
+
 import React, { Component, PropTypes } from 'react';
 
 export default class Counter extends Component {
