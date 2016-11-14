@@ -8,10 +8,6 @@ import Footer from '../components/Footer';
 
 
 class App extends Component {
-    componentWillMount() {
-        console.log(this.props);
-        this.props.fetchTodos();
-    }
 
     render() {
         // we can use ES6's object destructuring to effectively 'unpack' our props

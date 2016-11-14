@@ -274,12 +274,6 @@ var App = function (_Component) {
     }
 
     _createClass(App, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            console.log(this.props);
-            this.props.fetchTodos();
-        }
-    }, {
         key: 'render',
         value: function render() {
             // we can use ES6's object destructuring to effectively 'unpack' our props
