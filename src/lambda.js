@@ -43,9 +43,6 @@ exports.handler = (event, context, callback) => {
             dynamo.deleteItem({ TableName: "todos", Key: JSON.parse(event.body) }, done);
             break;
         case 'GET':
-            //dynamo.putItem({TableName: "testtabell", Item: {name: "Votes", votes: 3}}, function() {});
-            //dynamo.putItem({TableName: "testtabell", Item: {name: "Name", value: "Petter"}}, function() {});
-            //dynamo.scan({ TableName: event.queryStringParameters.TableName }, done);
             dynamo.scan({ TableName: "todos" }, done);
             break;
         case 'POST':
@@ -57,7 +54,7 @@ exports.handler = (event, context, callback) => {
         //    dynamo.updateItem(JSON.parse(event.body), done);
             //break;
         default:
-            done(new Error(`Unsupported method "${event.httpMethod}"`));
+            done(new Error(`Ukjent HTTP-metode. Du sendte inn følgende greier:` + JSON.stringify(event)));
     }
 };
 
