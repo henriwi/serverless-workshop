@@ -1,4 +1,4 @@
-'use strict';
+e strict';
 
 console.log('Loading function');
 
@@ -32,11 +32,11 @@ exports.handler = (event, context, callback) => {
             body: err ? err.message : JSON.stringify(res),
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*' // Denne byttes senere ut med origin til S3 Website
             },
         })
     };
 
-		/* Post objekt på form {"key": "1234", "text": "todo" } */
     switch (event.httpMethod) {
         case 'DELETE':
             console.log(JSON.parse(event.body));
