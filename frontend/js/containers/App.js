@@ -1,33 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as CounterActions from '../actions/CounterActions';
-import * as todoActions from '../actions/todoActions';
-import * as formActions from '../actions/formActions';
+import { fetchTodos, postTodo, textChange } from '../actions';
 
+const Todos = ({ todos }) =>
+  <ul>
+    {todos.map(todo => <li key={todo.key}>{todo.text}</li>)}
+  </ul>;
 
-class App extends Component {
-  render() {
-    // we can use ES6's object destructuring to effectively 'unpack' our props
-    const { todoActions, formActions, form } = this.props;
-    console.log(this.props);
-    return (
-      <div className="main-app-container">
-        <div className="main-app-nav">Lambda Todo</div>
-        {/* notice that we then pass those unpacked props into the Counter component */}
-        <button onClick={todoActions.fetchTodos}>fetch</button>
-        <br/>
-        <label htmlFor="key">Key</label>
-        <input name="key" id="key" value={form.key} onChange={formActions.keyChange} />
-        <br/>
-        <label htmlFor="text">Text</label>
-        <input name="text" id="text" value={form.text} onChange={formActions.textChange} />
-        <br/>
-        <button onClick={todoActions.postTodo}>Add</button>
-      </div>
-    );
-  }
-}
+const App = ({ todos, form, fetchTodos, postTodo, textChange }) =>
+  <div>
+    <div className="main-app-nav">Lambda Todo</div>
+    <button onClick={fetchTodos}>fetch</button>
+    <br/>
+    <Todos todos={todos} />
+    <label htmlFor="text">Text</label>
+    <input name="text" id="text" value={form.text} onChange={textChange} />
+    <br/>
+    <button onClick={postTodo}>Add</button>
+  </div>;
 
 App.propTypes = {
   // counter: PropTypes.number.isRequired,
@@ -41,14 +32,7 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    todoActions: bindActionCreators(todoActions, dispatch),
-    formActions: bindActionCreators(formActions, dispatch)
-  };
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  ({todos, form}) => ({todos, form}),
+  { fetchTodos, postTodo, textChange }
 )(App);
