@@ -1,9 +1,10 @@
-import { FETCHING, SAVE_TODOS, KEY_CHANGE, TEXT_CHANGE, URL } from './constants';
 import uuid from 'uuid';
+
+const URL = 'https://idzo20hr52.execute-api.eu-central-1.amazonaws.com/prod/TestLambda';
 
 function saveTodos(todos) {
   return {
-    type: SAVE_TODOS,
+    type: 'SAVE_TODOS',
     todos
   };
 }
@@ -50,7 +51,7 @@ export function deleteTodo(todo) {
 
 export function textChange(event) {
   return {
-    type: TEXT_CHANGE,
+    type: 'TEXT_CHANGE',
     text: event.target.value
   };
 }
