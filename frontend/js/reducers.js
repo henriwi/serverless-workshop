@@ -11,10 +11,14 @@ const todos = (state = [], action) => {
   }
 }
 
-const form = (state = { text: '' }, action) => {
+const initial = { text: '' }
+
+const form = (state = initial, action) => {
   switch (action.type) {
   case TEXT_CHANGE:
-    return Object.assign({}, state, { text: action.text });
+    return { text: action.text };
+  case 'FETCHING':
+    return initial;
   default:
     return state;
   }

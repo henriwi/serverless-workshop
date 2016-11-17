@@ -1,4 +1,4 @@
-import { SAVE_TODOS, KEY_CHANGE, TEXT_CHANGE, URL } from './constants';
+import { FETCHING, SAVE_TODOS, KEY_CHANGE, TEXT_CHANGE, URL } from './constants';
 import uuid from 'uuid';
 
 function saveTodos(todos) {
@@ -10,6 +10,7 @@ function saveTodos(todos) {
 
 export function fetchTodos() {
   return dispatch => {
+    dispatch({ type: 'FETCHING' })
     fetch(URL, {mode: 'cors'})
     .then(response => {
       return response.json().then(json => dispatch(saveTodos(json.Items)))
