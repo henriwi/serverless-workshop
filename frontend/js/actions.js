@@ -1,4 +1,5 @@
 import { SAVE_TODOS, KEY_CHANGE, TEXT_CHANGE, URL } from './constants';
+import uuid from 'uuid';
 
 function saveTodos(todos) {
   return {
@@ -16,12 +17,32 @@ export function fetchTodos() {
   }
 }
 
-export function postTodo(key,text) {
-  return dispatch => {
-    fetch(URL, {mode: 'no-cors', method: 'post'})
+export function postTodo() {
+  return (dispatch, getState) => {
+    const text = getState().form.text;
+    fetch(URL, {
+      mode: 'cors',
+      method: 'post',
+      body: JSON.stringify({
+        key: uuid.v4(),
+        text
+      })
+    })
     .then(response => {
-        //console.log("response", response);
-        //return dispatch(saveTodos));
+        dispatch(fetchTodos())
+    })
+  }
+}
+
+export function deleteTodo(todo) {
+  return dispatch => {
+    fetch(URL, {
+      mode: 'cors',
+      method: 'delete',
+      body: JSON.stringify(todo)
+    })
+    .then(response => {
+        dispatch(fetchTodos())
     })
   }
 }

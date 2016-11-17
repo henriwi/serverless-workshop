@@ -1,21 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchTodos, postTodo, textChange } from '../actions';
+import { fetchTodos, postTodo, deleteTodo, textChange } from '../actions';
 
-const Todos = ({ todos }) =>
+const Todos = ({ todos, deleteTodo }) =>
   <ul>
-    {todos.map(todo => <li key={todo.key}>{todo.text}</li>)}
+    {todos.map(todo =>
+      <li key={todo.key}>
+        <span>{todo.text}</span> <button onClick={() => deleteTodo(todo) }>Slett</button>
+      </li>)}
   </ul>;
 
-const App = ({ todos, form, fetchTodos, postTodo, textChange }) =>
+const App = ({ todos, form, postTodo, deleteTodo, textChange }) =>
   <div>
-    <div className="main-app-nav">Lambda Todo</div>
-    <button onClick={fetchTodos}>fetch</button>
+    <div>Lambda Todo</div>
     <br/>
-    <Todos todos={todos} />
-    <label htmlFor="text">Text</label>
-    <input name="text" id="text" value={form.text} onChange={textChange} />
+    <Todos todos={todos} deleteTodo={deleteTodo} />
+    <input placeholder="Din todo" value={form.text} onChange={textChange} on />
     <br/>
     <button onClick={postTodo}>Add</button>
   </div>;
@@ -34,5 +35,5 @@ function mapStateToProps(state) {
 
 export default connect(
   ({todos, form}) => ({todos, form}),
-  { fetchTodos, postTodo, textChange }
+  { postTodo, deleteTodo, textChange }
 )(App);

@@ -11,11 +11,8 @@ const todos = (state = [], action) => {
   }
 }
 
-const form = (state = { key: '', text: '' }, action) => {
+const form = (state = { text: '' }, action) => {
   switch (action.type) {
-  case KEY_CHANGE:
-    debugger
-    return Object.assign({}, state, { key: action.key });
   case TEXT_CHANGE:
     return Object.assign({}, state, { text: action.text });
   default:

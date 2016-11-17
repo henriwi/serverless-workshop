@@ -4,9 +4,10 @@ import { Provider } from 'react-redux';
 
 import configureStore from './configureStore';
 import App from './containers/App';
+import { fetchTodos } from './actions';
 
 const store = configureStore();
-console.log(store)
+store.dispatch(fetchTodos())
 ReactDOM.render(
     <Provider store={store}>
         <App />
