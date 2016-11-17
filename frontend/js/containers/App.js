@@ -6,8 +6,8 @@ import { fetchTodos, postTodo, deleteTodo, textChange } from '../actions';
 const Todos = ({ todos, deleteTodo }) =>
   <ul>
     {todos.map(todo =>
-      <li key={todo.key}>
-        <span>{todo.text}</span> <button onClick={() => deleteTodo(todo) }>Slett</button>
+      <li className="todo" key={todo.key}>
+        <span>{todo.text}</span> <button className="delete" onClick={() => deleteTodo(todo) }>✖︎</button>
       </li>)}
   </ul>;
 
