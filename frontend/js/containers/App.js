@@ -12,14 +12,18 @@ const Todos = ({ todos, deleteTodo }) =>
   </ul>;
 
 const App = ({ todos, form, postTodo, deleteTodo, textChange }) =>
-  <div>
-    <div>Lambda Todo</div>
-    <br/>
+  <main>
+    <h1>Serverless todos</h1>
     <Todos todos={todos} deleteTodo={deleteTodo} />
-    <input placeholder="Din todo" value={form.text} onChange={textChange} on />
-    <br/>
-    <button onClick={postTodo}>Add</button>
-  </div>;
+    <input
+      autoFocus
+      placeholder="Din todo"
+      value={form.text}
+      onChange={textChange}
+      onKeyPress={(e) => {
+        if (e.key === 'Enter') postTodo()
+      }} />
+  </main>;
 
 App.propTypes = {
   // counter: PropTypes.number.isRequired,
