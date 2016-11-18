@@ -49,15 +49,15 @@ For at frontenden skal fungere mot API-et må vi configurere [CORS](https://deve
 - Velg _Actions_ -> _Enable CORS_
 - Lim inn domenenavnet til frontenden din i `Access-Control-Allow-Origin`-headeren
 - Lagre og deploy API-et ditt på nytt
-- Gå til Lam
 
 #### I Lambdaen
 - Gå til lambdaen din
-- Finn headerne som returneres fra lambdaen og legg inn frontend-URL-en din i CORS-headeren her også
+- Finn headerne som returneres fra lambdaen og legg inn URL-en til frontenden din i CORS-headeren her også
 
 ### Legg inn API-root i frontenden
 For at frontenden skal gå mot riktig host må vi legge inn URL-en til API-et
-- Gå til `<fil-med-config` og erstatt `API_ROOT`-konstanten med URL-en til API-et ditt
+- Gå til `frontend/js/action.js` og erstatt `URL`-konstanten med URL-en til API-et ditt
+- Kjør `npm install`
 - Kjør `npm run build`
 - Last opp `bundle.js` til S3-bucketen din
 - Sett leserettigheter for `Everyone` på fila
