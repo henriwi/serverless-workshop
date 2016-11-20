@@ -11,7 +11,7 @@
 - Ikke sett opp noen triggere, dette gjør vi senere
 - Gi Lambdaen din et navn
 - Velg runtime _Node.js 4.3_ (default)
-- Lim inn koden fra `src/lambda.js`
+- Lim inn koden fra `src/lambda.js`. Erstatt `"todos"` med navnet på DynamoDB-tabellen din i alle eventhandlerene
 - Under _Role_, velg _Create new role from templates_
   - Gi rollen et navn og velg _Simple Microservice permissions_ under Policy templates
 - Test Lambdaen din ved å trykke på _Test_ Du skal forvente output ala _"Ukjent HTTP-metode ..."_
