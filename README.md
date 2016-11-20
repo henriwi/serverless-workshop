@@ -25,6 +25,7 @@ Lambdaen din er nå opprettet. Vi fortsetter med å sette opp API og frontend.
 - Velg _Action_ -> _Create method_ for å opprette en metode på rot-ressursen (`/`)
 - Velg `ANY` i dropdownen for å lage en handler for alle HTTP-metoder
 - Velg Integration type _Lambda Function_
+- Hak av for _Use Lambda Proxy integration_
 - Velg regionen der Lambdaen fra forrige steg ligger, og skriv inn navnet på lambdaen.
 
 #### Deploy og test API-et
