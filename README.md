@@ -47,7 +47,7 @@ For at frontenden skal fungere mot API-et må vi configurere [CORS](https://deve
 #### I API-et
 - Gå tilbake til API-et ditt
 - Velg _Actions_ -> _Enable CORS_
-- Lim inn domenenavnet til frontenden din i `Access-Control-Allow-Origin`-headeren
+- Lim inn domenenavnet til frontenden din i `Access-Control-Allow-Origin`-headeren. Sjekk at du ikke får med trailing slash, med mindre siten din har trailing slash. 
 - Lagre og deploy API-et ditt på nytt
 
 #### I Lambdaen
