@@ -60,7 +60,7 @@ For at frontenden skal gå mot riktig host må vi legge inn URL-en til API-et
 - Gå til `frontend/js/action.js` og erstatt `URL`-konstanten med URL-en til API-et ditt
 - Kjør `npm install`
 - Kjør `npm run build`
-- Last opp `bundle.js` og `styles.css` til S3-bucketen din
+- Last opp `bundle.js` og `styles.css` til S3-bucketen din i en mappe `static`
 - Sett leserettigheter for `Everyone` på fila
 
 ### Test appen din
