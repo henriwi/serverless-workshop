@@ -6,6 +6,10 @@ const doc = require('dynamodb-doc');
 
 const dynamo = new doc.DynamoDB();
 
+const dynamo_tablename = "todo"
+
+const frontend_origin = "http://serverless-bucketz.s3-website.eu-central-1.amazonaws.com";
+
 
 /**
  * Demonstrates a simple HTTP endpoint using API Gateway. You have full
@@ -31,21 +35,20 @@ exports.handler = (event, context, callback) => {
             body: err ? err.message : JSON.stringify(res),
             headers: {
                 'Content-Type': 'application/json',
-                //'Access-Control-Allow-Origin': 'http://0.0.0.0:8000'
-                'Access-Control-Allow-Origin': 'http://serverless-bucketz.s3-website.eu-central-1.amazonaws.com'
+                'Access-Control-Allow-Origin': frontend_origin
             },
         })
     };
 
     switch (event.httpMethod) {
         case 'DELETE':
-            dynamo.deleteItem({ TableName: "todos", Key: JSON.parse(event.body) }, done);
+            dynamo.deleteItem({ TableName: dynamo_tablename, Key: JSON.parse(event.body) }, done);
             break;
         case 'GET':
-            dynamo.scan({ TableName: "todos" }, done);
+            dynamo.scan({ TableName: dynamo_tablename }, done);
             break;
         case 'POST':
-            dynamo.putItem({ TableName: "todos", Item: JSON.parse(event.body) }, done)
+            dynamo.putItem({ TableName: dynamo_tablename, Item: JSON.parse(event.body) }, done)
             break;
         default:
             done(new Error(`Ukjent HTTP-metode. Du sendte inn følgende greier:` + JSON.stringify(event)));
