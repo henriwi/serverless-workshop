@@ -52,11 +52,10 @@ Først må vi legge inn riktig URL til API-et i frontenden.
 - Kjør `npm run build` for å bygge applikasjonen
 
 ### S3
-#### REDIGERE ACTIONS.JS HER? laste opp til static-mappe? permissions på alt
 - Opprett en S3-bucket
 - Last opp `index.html`
 - Lag en mappe kalt `static` og last opp `bundle.js` og `styles.css` i denne
-- Sett leserettigheter for _Everyone_ på alle tre filene 
+- Sett leserettigheter for _Everyone_ på alle tre filene
 - Gå på properties på bucketen din og sett opp _Static website hosting_ med `index.html` som _index document_
 - Noter deg domenenavnet siten din får: `<ditt-bucketnavn>.s3-website.<aws-region>.amazonaws.com`
 
@@ -66,7 +65,7 @@ For at frontenden skal fungere mot API-et må vi configurere [CORS](https://deve
 #### I API-et
 - Gå tilbake til API-et ditt
 - Velg _Actions_ -> _Enable CORS_
-- Lim inn domenenavnet til frontenden din i `Access-Control-Allow-Origin`-headeren. Sjekk at du ikke får med trailing slash, med mindre siten din har trailing slash. 
+- Lim inn domenenavnet til frontenden din i `Access-Control-Allow-Origin`-headeren. Sjekk at du ikke får med trailing slash, med mindre siten din har trailing slash.
 - Fullfør CORS-wizarden
 - Deploy API-et ditt på nytt
 
