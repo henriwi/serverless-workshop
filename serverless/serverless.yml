@@ -1,0 +1,24 @@
+service: test-serverless
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:eu-central-1:*:*"
+  region: eu-central-1
+
+functions:
+  todo:
+    handler: handler.todo
+    events:
+      - http: ANY todo
+      - cors: true

@@ -79,3 +79,38 @@ Det var det! Todo-appen bør fungere nå 🚀
 ### Sjekke logger? 🕵
 
 Lambdaen logger requester og annet snacks til Cloudwatch. Gå inn og ta en titt om du er nysgjerrig på sånt.
+
+### Bonusoppgaver
+
+#### Bruk Serverless Framework til å deploye lambdafunksjonen
+Serverless Framework er dokumentert [her](https://serverless.com/framework/docs/).
+
+- Gå til [serverless.com](https://serverless.com/framework/docs/providers/aws/guide/installation/) og installer `serverless`
+- Sett opp AWS credentials ved å eksportere `AWS_ACCESS_KEY_ID` og `AWS_SECRET_ACCESS_KEY` i terminalen. Dokumentasjon finner du [her](https://serverless.com/framework/docs/providers/aws/guide/credentials/)
+
+##### Service
+- Vi skal først sette opp en service. Dette kan du lese mer om [her](https://serverless.com/framework/docs/providers/aws/guide/services/)
+- Kjør følgende kommando for å lage en service: `serverless create --template aws-nodejs --path <service-navn>`
+- Åpne `serverless.yml`, fjern kommentaren for region og endre til ønsket region
+
+##### Funksjon
+- Nå skal vi ta lambdafunksjonen som vi laget i workshopen og deploye denne med serverless-rammeverket i stedet. Du kan lese mer om funksjoner [her](https://serverless.com/framework/docs/providers/aws/guide/functions/)
+- Erstatt innholdet i filen `handler.js` med koden til lambdafunksjonen vi brukte i sted. Erstatt `exports.handler` med `module.exports.<navn-på-lambda>`
+- Finn konfigurasjonsdelen for funksjoner i `serverless.yml` og erstatt `hello` med navnet på lambda-funksjonen din
+
+##### Events
+- For å kunne kjøre lambdaen skal vi som i workshopen trigge lambdaen fra API Gateway. For å sette opp dette, les hvordan dette gjøres [her](https://serverless.com/framework/docs/providers/aws/events/apigateway/)
+- Vi ønsker å sette opp integrasjonen med `Lambda Proxy Integration`
+- Husk å aktivere `cors`.
+
+##### Tilganger
+- For at lambdafunksjonen skal kunne lese og skrive til DynamoDB-tabellen vår, må den gis tilgang til dette. Se under Permissions [her](https://serverless.com/framework/docs/providers/aws/guide/functions/) for hvordan dette gjøres
+
+##### Deploy
+- For å deploye hele services din, inkludert funksjoner og API Gateway konfigurasjon, kjør `serverless deploy`
+- Kommandoen vil skrive ut URL-en til API-et ditt. Test at denne fungerer og at data fra DynamoDB-tabellen blir returnert
+- For å kun deploye endringer i lambda-funksjonen din kan du kjøre `serverless deploy -f <lambda-funksjon>`
+- For å kjøre lambdafunksjonen kan du kjøre `serverless invoke -f <lambda-funksjon> -l`
+
+##### Frontend
+- Til slutt kan du bytte ut URL-en til det nye API-et ditt i `actions.js` og bygge frontenden på nytt. Husk å laste opp `bundle.js` til S3 på nytt, og sjekk at frontenden fortsatt fungerer
