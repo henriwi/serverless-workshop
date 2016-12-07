@@ -114,3 +114,6 @@ Serverless Framework er dokumentert [her](https://serverless.com/framework/docs/
 
 ##### Frontend
 - Til slutt kan du bytte ut URL-en til det nye API-et ditt i `actions.js` og bygge frontenden på nytt. Husk å laste opp `bundle.js` til S3 på nytt, og sjekk at frontenden fortsatt fungerer
+
+##### Rydde opp
+- Fjern alle komponentene som serverless har satt opp ved å kjøre `serverless remove`.
