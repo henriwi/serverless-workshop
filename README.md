@@ -116,3 +116,12 @@ Serverless Framework er dokumentert [her](https://serverless.com/framework/docs/
 
 ##### Rydde opp
 - Fjern alle komponentene som serverless har satt opp ved å kjøre `serverless remove`.
+
+#### Trekke miljøvariabler ut i eventet
+Man kan forbedre funksjonen ved at man konfigurerer API Gateway til å send med origin_url istedet for at det er hardkodet i funksjonen.
+Om du ønsker å gjøre det med terraform kan du bruke ressursen  [api_gateway_deployment](https://www.terraform.io/docs/providers/aws/r/api_gateway_deployment.html).
+Det kan også gjøres manuelt i stage-en i API Gateway igjennom AWS konsollet.
+
+#### Forbedre Terraform oppsett
+1. Legge til CORS støtte med terraform
+2. Fikse integrasjonsproxyen med lambda. OBS: Dette kan være en bug i terraform
