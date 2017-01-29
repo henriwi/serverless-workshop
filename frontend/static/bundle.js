@@ -15,7 +15,7 @@ var _uuid2 = _interopRequireDefault(_uuid);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var URL = 'https://idzo20hr52.execute-api.eu-central-1.amazonaws.com/prod/TestLambda';
+var URL = '/api';
 
 function saveTodos(todos) {
   return {

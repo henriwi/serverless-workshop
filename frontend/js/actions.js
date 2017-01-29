@@ -1,6 +1,6 @@
 import uuid from 'uuid';
 
-const URL = 'https://idzo20hr52.execute-api.eu-central-1.amazonaws.com/prod/TestLambda';
+const URL = '/api';
 
 function saveTodos(todos) {
   return {
