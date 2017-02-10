@@ -51,7 +51,7 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
+  todo:
     handler: handler.todo
     events:
       - http: ANY todo
