@@ -117,30 +117,32 @@ Serverless Framework er dokumentert [her](https://serverless.com/framework/docs/
 ### Service
 Vi skal først sette opp en service. Dette kan du i vårt tilfelle tenke på som applikasjonen vår. Du kan lese mer om service [her](https://serverless.com/framework/docs/providers/aws/guide/services/)
 
-1. Opprett en ny, tom mappe på maskinen din og kjør følgende kommando for å lage en service: `sls create --template aws-nodejs --path <service-navn>`
+1. Opprett en ny, tom mappe på maskinen din og kjør følgende kommando for å lage en service: `sls create --template aws-nodejs --path <selvsagt-service-navn>`
 2. Du har nå fått opprettet en template til en service, og all konfigurasjonen ligger i filen `serverless.yml`.
-2. Åpne `serverless.yml`, fjern kommentaren for region og endre til ønsket region. 
+2. Åpne `serverless.yml`, fjern kommentaren for region og endre til ønsket region, for eksempel `eu-central-1`.
 
 ### DynamoDB
 Vi skal, som i del 1, starte med å sette opp en DynamoDB-tabell. Dette gjøres ved å definere en såkalt CloudFormation-template i `serverless.yml`. Du kan lese mer om dette [her](https://serverless.com/framework/docs/providers/aws/guide/resources/).
 
-1. Sett opp en DynamoDB-tabell under `resources` i `serverless.yml`. Tabellen skal være helt lik.
-	- Husk å kalle tabellen noe annet enn i del 1.
-	- Attributtene til tabellene defineres i `AttributeDefinitions`, mens `PrimaryKey` og `SortKey` defineres i `KeySchema`. Du kan lese mer om oppsett av DynamoDB-tabeller med CloudFormation [her](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html).
+- Sett opp en DynamoDB-tabell under `resources` i `serverless.yml`. Tabellen skal være helt lik den vi lagde i del 1.
+	- Tabellnavn i DynamoDB er unike, bruk derfor et annet navn enn i del 1.
+	- Attributtene til tabellene defineres i `AttributeDefinitions`.
+  - `PrimaryKey` og `SortKey` defineres i `KeySchema`.
+  - Du kan lese mer om oppsett av DynamoDB-tabeller med CloudFormation [her](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html).
 
 ### Funksjoner
-Nå skal vi ta lambdafunksjonen som vi laget i workshopen og deploye denne med serverless-rammeverket i stedet. Du kan lese mer om funksjoner [her](https://serverless.com/framework/docs/providers/aws/guide/functions/).
+Vi skal nå ta for oss lambdafunksjonen vi lagde i del 1, og deploye denne med serverless-rammeverket i stedet. Du kan lese mer om funksjoner [her](https://serverless.com/framework/docs/providers/aws/guide/functions/).
 
-1. Erstatt innholdet i filen `handler.js` med koden til lambdafunksjonen vi brukte i sted. Erstatt `exports.handler` med `module.exports.<navn-på-lambda>`
-2. Erstatt tabellnavnet med navnet på tabellen du definerte i forrige steg.
+1. Erstatt innholdet i filen `handler.js` med innholdet i fila `lamda/index,js`, som vi brukte til lambdafunksjonen i del 1. Merk at `exports.handler` må byttes ut med `module.exports.<navn-på-lambda>`
+2. Erstatt tabellnavnet i lambda-koden med navnet på tabellen du definerte i forrige steg.
 3. Finn konfigurasjonsdelen for funksjoner i `serverless.yml` og erstatt `hello` med navnet på lambda-funksjonen din
 
 ### Events
-- For å kunne kjøre lambdaen skal vi som i workshopen trigge lambdaen fra API Gateway. Les om hvordan dette gjøres [her](https://serverless.com/framework/docs/providers/aws/events/apigateway/)
+- Som i del 1 skal vi trigge lambdaen via API Gateway. Les om hvordan dette gjøres [her](https://serverless.com/framework/docs/providers/aws/events/apigateway/).
 - Vi ønsker å sette opp integrasjonen med `Lambda Proxy Integration`
 
 ### Tilganger
-- For at lambdafunksjonen skal kunne lese og skrive til DynamoDB-tabellen vår, må den gis tilgang til dette. Se under Permissions [her](https://serverless.com/framework/docs/providers/aws/guide/functions/) for hvordan dette gjøres.
+- For at lambdafunksjonen skal kunne lese og skrive til DynamoDB-tabellen vår, må den gis tilgang til dette. Se under seksjonen "Permissions" i dokumentasjonen til  [Functions](https://serverless.com/framework/docs/providers/aws/guide/functions) for hvordan dette gjøres.
 
 ### Deploy
 Da har vi definert alle delene av applikasjonen vår bortsett fra S3 og CloudFront. Dette gjør vi manuelt gjennom AWS Console.
@@ -152,9 +154,9 @@ Da har vi definert alle delene av applikasjonen vår bortsett fra S3 og CloudFro
 5. For å kjøre lambdafunksjonen kan du kjøre `sls invoke -f <lambda-funksjon> -l`.
 
 ### Frontend og CloudFront
-Frontend-en vår går fortsatt til det gamle API-et vårt. Nå skal vi gå inn i CloudFront og endre routingen slik at `/api` nå peker til vår nyopprettede API-Gateway istedenfor den gamle.
+Frontenden vår går fortsatt til det gamle API-et vårt. Nå skal vi gå inn i CloudFront og endre routingen slik at `/api` nå peker til vår nyopprettede API-Gateway istedenfor den gamle.
 
-1. Opprett en ny origin for det nye API-et som er deployet på samme måte som for steg 1.
+1. Opprett en ny origin for det nye API-et vi deploet. Dette gjøres på samme måte som for del 1.
 2. Endre `behaviour` slik at trafikk på `/api` blir routet til det nye API-et.
 
 Når du nå tester frontenden skal CloudFront route forespørslene til den nye API-gatewayen som har blitt satt opp av Serverless-rammeverket, og hente data fra en ny DynamoDB-tabell. Test at dette virker ved at TODO-listen nå er tom og at du fortsatt får lagt inn og slettet elementer.
@@ -163,7 +165,7 @@ Når du nå tester frontenden skal CloudFront route forespørslene til den nye A
 - Før du går for dagen bør du fjerne alle komponentene som serverless har satt opp ved å kjøre `sls remove`.
 
 #### Trekke miljøvariabler ut i eventet
-Man kan forbedre funksjonen ved at man konfigurerer API Gateway til å send med origin_url istedet for at det er hardkodet i funksjonen.
+Man kan forbedre funksjonen ved at man konfigurerer API Gateway til å sende med origin_url istedet for at det er hardkodet i funksjonen.
 Om du ønsker å gjøre det med terraform kan du bruke ressursen  [api_gateway_deployment](https://www.terraform.io/docs/providers/aws/r/api_gateway_deployment.html).
 Det kan også gjøres manuelt i stage-en i API Gateway igjennom AWS konsollet.
 
