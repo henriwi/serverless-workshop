@@ -149,9 +149,12 @@ Da har vi definert alle delene av applikasjonen vår bortsett fra S3 og CloudFro
 
 1. For å deploye hele services din, inkludert funksjoner og API Gateway konfigurasjon, kjør `sls deploy`
 2. Logg inn i AWS Console og verifiser at de ulike ressursene (DynamoDB, API Gateway og Lambda) har blitt opprettet korrekt.
-3. Kommandoen vil skrive ut URL-en til API-et ditt. Test at denne fungerer og at data fra DynamoDB-tabellen blir returnert.
+
+### Test
+1. Kommandoen `sls info` vil skrive ut informasjon om tjenesten du har deployet, inkludrt URL-en til API-et ditt. Test at denne fungerer og at data fra DynamoDB-tabellen blir returnert.
+2. For å kjøre lambdafunksjonen din direkte (utenom API Gateway) kan du kjøre `sls invoke -f <lambda-funksjon> -l`.
+3. `sls logs -f <navn-på-lambda>` vil printe loggene til lambdafunksjonen din, mens `sls metrics` vil gi noen grunnleggende metrikker om tjenesten din. Test gjerne disse kommandoene.
 4. For å kun deploye endringer i lambda-funksjonen din kan du kjøre `sls deploy -f <lambda-funksjon>`.
-5. For å kjøre lambdafunksjonen kan du kjøre `sls invoke -f <lambda-funksjon> -l`.
 
 ### Frontend og CloudFront
 Frontenden vår går fortsatt til det gamle API-et vårt. Nå skal vi gå inn i CloudFront og endre routingen slik at `/api` nå peker til vår nyopprettede API-Gateway istedenfor den gamle.
