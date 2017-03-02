@@ -29,6 +29,12 @@ Vi skal først sette opp en service. Dette kan du i vårt tilfelle tenke på som
 - Opprett en ny, tom mappe, på maskinen din og kjør følgende kommando for å lage en service: `sls create --template aws-nodejs --path <selvsagt-service-navn>`
 - Du har nå fått opprettet en template til en service, og all konfigurasjon til servicen ligger i filen `serverless.yml`
 - Åpne `serverless.yml`, fjern kommentaren for region og endre til ønsket region, for eksempel `eu-central-1`
+- Kommenter ut (med `#`) følgende seksjon som omhandler lambda (vi kommer tilbake til dette senere):
+```
+functions:
+  hello:
+    handler: handler.hello
+```
 
 ## DynamoDB
 Vi skal, som i del 1, starte med å sette opp en DynamoDB-tabell. Dette gjøres ved å definere en såkalt CloudFormation-template i `serverless.yml`. Du kan lese mer om dette [her](https://serverless.com/framework/docs/providers/aws/guide/resources/).
@@ -47,7 +53,7 @@ Vi skal nå ta for oss lambdafunksjonen vi lagde i del 1, og deploye denne med s
 
 1. Erstatt innholdet i filen `handler.js` med innholdet i fila `lamda/index,js`, som vi brukte til lambdafunksjonen i del 1. Merk at `exports.handler` må byttes ut med `module.exports.<navn-på-lambda>`. Du velger selv hva lambdafunksjonen din skal hete.
 2. Erstatt tabellnavnet i lambda-koden med navnet på tabellen du definerte i forrige steg
-3. Finn konfigurasjonsdelen for funksjoner i `serverless.yml` og erstatt `hello` med navnet på lambdafunksjonen din
+3. Finn konfigurasjonsdelen for funksjoner i `serverless.yml`, fjern kommentarene vi la inn i stad, og erstatt `hello` med navnet på lambdafunksjonen din
 
 ### Deploy funksjonen
 Kjør `sls deploy` igjen, og verifiser at lambdafunksjonen har blitt opprettet korrekt.
