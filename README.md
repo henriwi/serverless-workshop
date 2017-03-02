@@ -205,14 +205,3 @@ Når du nå tester frontenden skal CloudFront route forespørslene til den nye A
 Før du går for dagen må du fjerne alle komponentene vi har satt opp.
 
 _ `sls remove` fjerner alle ressursene som har blitt satt opp med Serverless Framework
-
-## Bonusoppgaver
-
-## Trekke miljøvariabler ut i eventet
-Man kan forbedre funksjonen ved at man konfigurerer API Gateway til å sende med `origin_url` istedet for at det er hardkodet i funksjonen.
-Om du ønsker å gjøre det med terraform kan du bruke ressursen  [api_gateway_deployment](https://www.terraform.io/docs/providers/aws/r/api_gateway_deployment.html).
-Det kan også gjøres manuelt i stage-en i API Gateway igjennom AWS konsollet.
-
-## Forbedre Terraform oppsett
-- Legge til CORS støtte med terraform
-- Fikse integrasjonsproxyen med lambda. OBS: Dette kan være en bug i terraform
