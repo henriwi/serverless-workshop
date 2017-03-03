@@ -121,3 +121,16 @@ Serverless Framework har støtte for å kjøre lambdafunksjonene lokalt ved å e
 - Lag en ny lambdafunksjon som f.eks. printer noe til konsollet, og test at du får kjørt denne lokalt
 - Test at du kan sende inn data til funksjonen og print datene du får sendt inn til konsollet
 - Legg til den nye lambdafunksjonen din i `serverless.yml`, deploy servicen din på nytt og verifiser at du nå får eksekvert lambdafunksjonen din i AWS
+
+### Versjonering av lambdafunksjoner
+
+Lambdafunksjoner har støtte for såkalte versjoner og aliaser som gjør det mulig å ha ulike versjoner av samme lambdafunksjon. Dette er dokumentert [her](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+
+API Gateway kan videre peke på ulike aliaser av lambdafunksjoner, noe som gjør det mulig å ha ulike versjoner av lambdafunksjonene i de ulike API Gateway `stagene`.
+
+- Målet med denne oppgaven er å opprette to aliaser av lambdafunksjonen din, en `dev` og en `prod` som peker på to ulike versjoner av lambdafunksjonen din
+- Videre må du opprette et stage til i API Gatewayen
+- Opprett så stagevariabler, en for hvert stage, som har verdien `dev` og `prod`.
+- For å få til dette må du opprette såkalte stage variabler for hvert stage som du refererer til i integrasjonsoppsettet
+- For å referere til en stagevariable: Gå under Integration Type -> Lambda Function og legg til en referanse til stagevariablen slik `MinLambda:${stageVariables.lambdaAlias}`
+- Etter at API Gateway stagene dine peker på ulike aliaser, prøv å oppdatere lambdafunksjonene dine med ny kode (f.eks. printing til konsollet), først i `dev` og så i `prod`
