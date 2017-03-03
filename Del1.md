@@ -22,7 +22,7 @@ Lag en ny Lambda-funksjon. Start med templaten _Blank Function_
 - Ikke sett opp noen triggere, dette gjør vi senere
 - Gi Lambdaen din et navn
 - Velg runtime _Node.js 4.3_ (default)
-- Lim inn koden fra [`lambda/index.js`](lambda/index.js). Erstatt variabelen `dynamo_tablename` med navnet på DynamoDB-tabellen.
+- Lim inn koden fra [`lambda/index.js`](lambda/index.js). Erstatt variabelen `TABLE` med navnet på DynamoDB-tabellen.
 - Under _Role_, velg _Create new role from templates_
   - Gi rollen et navn og velg _Simple Microservice permissions_ under Policy templates
 - La resten stå som default, klikk _Next_ og _Create function_
