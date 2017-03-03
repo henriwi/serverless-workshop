@@ -102,4 +102,22 @@ Når du nå tester frontenden skal CloudFront route forespørslene til den nye A
 
 Før du går for dagen må du fjerne alle komponentene vi har satt opp.
 
-_ `sls remove` fjerner alle ressursene som har blitt satt opp med Serverless Framework
+- `sls remove` fjerner alle ressursene som har blitt satt opp med Serverless Framework
+
+## Bonusoppgaver
+
+Ferdig med alle oppgavene? Da har vi noen bonusoppgaver som du kan bryne deg på til slutt.
+
+### Sette opp et nytt miljø
+
+Serverless Framework kan brukes til å deploye servicen vår til et helt nytt miljø ved å bruke `stage`-konseptet til SF. Default stage er `dev`, men vi ønsker nå å deploye servicen vår til et annet miljø, f.eks. `prod`.
+
+- `sls deploy --stage <miljo>` vil deploye hele servicen til et nytt miljø. Kjør kommandoen og verifiser at du har fått opprettet nye tjenester med prefix `<miljo>-`
+
+### Lokal kjøring av lambdafunksjoner
+
+Serverless Framework har støtte for å kjøre lambdafunksjonene lokalt ved å emulere kjøretidsmiljøet til AWS Lambda. Dette er dokumentert [her](https://serverless.com/framework/docs/providers/aws/cli-reference/invoke-local/).
+
+- Lag en ny lambdafunksjon som f.eks. printer noe til konsollet, og test at du får kjørt denne lokalt
+- Test at du kan sende inn data til funksjonen og print datene du får sendt inn til konsollet
+- Legg til den nye lambdafunksjonen din i `serverless.yml`, deploy servicen din på nytt og verifiser at du nå får eksekvert lambdafunksjonen din i AWS
