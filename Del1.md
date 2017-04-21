@@ -34,11 +34,11 @@ Lambdaen din er nå opprettet. Vi fortsetter med å sette opp API og frontend.
 
 ### Opprett API med ressurs som trigger lambda
 - Opprett et nytt API i API Gateway
-- Velg _Acton_ -> _Create Resource_ med path `/api`
+- Velg _Acton_ -> _Create Resource_ med path `/api`. Gi ressursen et valgfritt navn.
 - Marker den nyopprettede ressursen og opprett en ny metode på denne med _Action_ -> _Create method_
 - Velg `ANY` i dropdownen for å lage en handler for alle HTTP-metoder
 - Velg Integration type _Lambda Function_
-- Huk av for _Use Lambda Proxy integration_
+- Velg _Use Lambda Proxy integration_
 - Velg regionen der Lambdaen ligger og skriv inn navnet på lambdaen
 
 ### Deploy og test API-et
