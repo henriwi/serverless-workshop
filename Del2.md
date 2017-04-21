@@ -129,8 +129,8 @@ Lambdafunksjoner har støtte for såkalte versjoner og aliaser som gjør det mul
 API Gateway kan videre peke på ulike aliaser av lambdafunksjoner, noe som gjør det mulig å ha ulike versjoner av lambdafunksjonene i de ulike API Gateway `stagene`.
 
 - Målet med denne oppgaven er å opprette to aliaser av lambdafunksjonen din, en `dev` og en `prod` som peker på to ulike versjoner av lambdafunksjonen din
-- Videre må du opprette et stage til i API Gatewayen
-- Opprett så stagevariabler, en for hvert stage, som har verdien `dev` og `prod`.
+- Videre må du opprette et nytt stage i API Gatewayen
+- Opprett så stagevariabler, en for hvert stage, som har verdiene `dev` og `prod`.
 - For å få til dette må du opprette såkalte stage variabler for hvert stage som du refererer til i integrasjonsoppsettet
-- For å referere til en stagevariable: Gå under Integration Type -> Lambda Function og legg til en referanse til stagevariablen slik `MinLambda:${stageVariables.lambdaAlias}`
+- For å referere til en stagevariable: Gå under _Integration Type_ -> _Lambda Function_ og legg til en referanse til stagevariablen slik `MinLambda:${stageVariables.lambdaAlias}`
 - Etter at API Gateway stagene dine peker på ulike aliaser, prøv å oppdatere lambdafunksjonene dine med ny kode (f.eks. printing til konsollet), først i `dev` og så i `prod`
