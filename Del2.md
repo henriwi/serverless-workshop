@@ -40,33 +40,33 @@ functions:
 Vi skal, som i del 1, starte med å sette opp en DynamoDB-tabell. Dette gjøres ved å definere en såkalt CloudFormation-template i `serverless.yml`. Du kan lese mer om dette [her](https://serverless.com/framework/docs/providers/aws/guide/resources/).
 
 - Sett opp en DynamoDB-tabell under `resources` i `serverless.yml`. Tabellen skal være helt lik den vi lagde i del 1
-	- Tabellnavn i DynamoDB er unike, bruk derfor et annet navn enn i del 1
-	- Attributtene til tabellene defineres i `AttributeDefinitions`
+  - Tabellnavn i DynamoDB er unike, bruk derfor et annet navn enn i del 1
+  - Attributtene til tabellene defineres i `AttributeDefinitions`
   - `PrimaryKey` og `SortKey` defineres i `KeySchema`
   - Du kan lese mer om oppsett av DynamoDB-tabeller med CloudFormation [her](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html)
 
 ### Deploy databasen
-Kjør `sls deploy` for å deploye tjenesten med det som er definert av ressurser hittil. Verifiser at DynamoDB-tabellen din har blitt opprettet korrekt.
+Kjør `sls deploy` for å deploye tjenesten med det som er definert av ressurser hittil. Sjekk i webkonsollet at DynamoDB-tabellen din har blitt opprettet korrekt.
 
 ## Funksjoner
 Vi skal nå ta for oss lambdafunksjonen vi lagde i del 1, og deploye denne med serverless-rammeverket i stedet. Du kan lese mer om funksjoner [her](https://serverless.com/framework/docs/providers/aws/guide/functions/).
 
-1. Erstatt innholdet i filen `handler.js` med innholdet i fila `lamda/index,js`, som vi brukte til lambdafunksjonen i del 1. Merk at `exports.handler` må byttes ut med `module.exports.<navn-på-lambda>`. Du velger selv hva lambdafunksjonen din skal hete.
-2. Erstatt tabellnavnet i lambda-koden med navnet på tabellen du definerte i forrige steg
-3. Finn konfigurasjonsdelen for funksjoner i `serverless.yml`, fjern kommentarene vi la inn i stad, og erstatt `hello` med navnet på lambdafunksjonen din
+- Erstatt innholdet i filen `handler.js` med innholdet i fila [`lambda/index.js`](lambda/index.js), som vi brukte til lambdafunksjonen i del 1. Merk at `exports.handler` må byttes ut med `module.exports.<navn-på-lambda>`. Du velger selv hva lambdafunksjonen din skal hete
+- Erstatt tabellnavnet i lambda-koden med navnet på tabellen du definerte i forrige steg
+- Finn konfigurasjonsdelen for funksjoner i `serverless.yml`, fjern kommentarene vi la inn i stad, og erstatt `hello` med navnet på lambdafunksjonen din
 
 ### Deploy funksjonen
-Kjør `sls deploy` igjen, og verifiser at lambdafunksjonen har blitt opprettet korrekt.
+Kjør `sls deploy` igjen, og sjekk i webkonsollet at lambdafunksjonen har blitt opprettet korrekt.
 
 ## Events
 
 Som i del 1 skal vi trigge lambdaen via API Gateway. Les om hvordan dette gjøres [her](https://serverless.com/framework/docs/providers/aws/events/apigateway/).
 
-1. Vi ønsker å sette opp integrasjonen med `Lambda Proxy Integration`
-2. For at API-gatewayen skal fungere med Frontenden vår og CloudFront er det viktig at pathen til ressursen i APIet er `/api` , på samme måte som i del 1.
+- Vi ønsker å sette opp integrasjonen med `Lambda Proxy Integration`
+- For at API-gatewayen skal fungere med frontenden vår og CloudFront er det viktig at pathen til ressursen i APIet er `/api` , på samme måte som i del 1
 
 ### Deploy gateway
-Kjør `sls deploy` igjen, og verifiser at API-gatewayen har blitt opprettet korrekt.
+Kjør `sls deploy` igjen, og sjekk i webkonsollet at API-gatewayen har blitt opprettet korrekt. Endepunktet som skrives ut i terminalen etter `sls deploy` vil ikke fungere før du setter opp tilganger i neste punkt.
 
 ## Tilganger
 
@@ -75,8 +75,8 @@ For at lambdafunksjonen skal kunne lese og skrive til DynamoDB-tabellen vår, m�
 ## Deploy hele servicen
 Da har vi definert alle delene av applikasjonen vår bortsett fra S3 og CloudFront. Dette gjør vi manuelt gjennom AWS Console etterpå.
 
-1. Kjør `sls deploy` igjen for å deploye hele services din
-2. Verifiser at de ulike ressursene (DynamoDB, API Gateway og Lambda) har blitt opprettet korrekt
+- Kjør `sls deploy` igjen for å deploye hele services din
+- Verifiser at de ulike ressursene (DynamoDB, API Gateway og Lambda) har blitt opprettet korrekt
 
 ## Test
 Serverless Framework kommer med en del muligheter for å teste tjenesten din, samt hente ut ulike metrikker og lese logger.
@@ -93,7 +93,7 @@ Test ut følgende kommandoer (og gjerne flere) mot tjenesten du nettopp har depl
 ## Frontend og CloudFront
 Frontenden vår går fortsatt til det gamle API-et vårt. Nå skal vi gå inn i CloudFront og endre routingen slik at `/api` peker til vår nyopprettede API Gateway istedenfor den gamle.
 
-- Opprett en ny *origin* for API-et vi har deployet med Servlerless Framework. Dette gjøres på samme måte som i del 1
+- Opprett en ny *origin* for API-et vi har deployet med Servlerless Framework. Dette gjøres på samme måte som i [del 1](Del1.md#backend)
 - Endre *behaviour* slik at trafikk på `/api` blir routet til den nye *origin*, og dermed til vårt nye API
 
 Når du nå tester frontenden skal CloudFront route forespørslene til den nye API-gatewayen, og hente data fra en ny DynamoDB-tabell. Test at dette virker ved at Todo-listen nå er tom, og at du fortsatt får lagt inn og slettet elementer.
