@@ -90,13 +90,21 @@ Test ut følgende kommandoer (og gjerne flere) mot tjenesten du nettopp har depl
 - `sls metrics` gir grunnleggende metrikker om tjenesten din
 - `sls metrics -f <navn-på-lambda>` gir metrikker om en spesifikk lambda
 
+### Test APIet
+Før vi setter opp frontenden til å peke mot det nye APIet vårt, kan vi også teste at APIet fungerer ved hjelp av `curl`.
+
+Test ut følgende kommandoer for å legge inn og hente ut _todos_. Test gjerne kommandoene vi kjørte ovenfor og hent ut logger og metrikker for lambdafunksjonene etter du har kalt APIet.
+
+- `curl -GET <url-til-api>` vil hente ut alle todoene fra DynamoDB-tabellen
+- `curl -X POST -H "Content-Type: application/json" -d '{"key":"key1","text":"test"}' <url-til-api>` vil legge inn en ny todo. Merk at `key` må være unik.
+
 ## Frontend og CloudFront
 Frontenden vår går fortsatt til det gamle API-et vårt. Nå skal vi gå inn i CloudFront og endre routingen slik at `/api` peker til vår nyopprettede API Gateway istedenfor den gamle.
 
 - Opprett en ny *origin* for API-et vi har deployet med Servlerless Framework. Dette gjøres på samme måte som i [del 1](Del1.md#backend)
 - Endre *behaviour* slik at trafikk på `/api` blir routet til den nye *origin*, og dermed til vårt nye API
 
-Når du nå tester frontenden skal CloudFront route forespørslene til den nye API-gatewayen, og hente data fra en ny DynamoDB-tabell. Test at dette virker ved at Todo-listen nå er tom, og at du fortsatt får lagt inn og slettet elementer.
+Når du nå tester frontenden skal CloudFront route forespørslene til den nye API-gatewayen, og hente data fra en ny DynamoDB-tabell. Test at dette virker ved at du fortsatt får lagt inn og slettet elementer.
 
 ## Rydde opp
 
@@ -112,6 +120,13 @@ Ferdig med alle oppgavene? Da har vi noen bonusoppgaver som du kan bryne deg på
 
 Serverless Framework kan brukes til å deploye servicen vår til et helt nytt miljø ved å bruke `stage`-konseptet til SF. Default stage er `dev`, men vi ønsker nå å deploye servicen vår til et annet miljø, f.eks. `prod`.
 
+
+- Først må navnet til DynamoDB-tabellen ta hensyn til `stage` slik at vi unngår navnekonflikter når vi deployer et nytt miljø
+- I `serverless.yml` erstatt navnet til DynamoDB-tabellen med `${opt:stage, self:provider.stage}-<tabellnavn>`. Dette gjør at man bruker default stage (dev) fra konfigurasjonen, med mulig overstyring fra kommandolinjen
+- Når tabellen har blitt prefixet med miljø, må lambdakoden også ta hensyn til dette. Legg til følgende kode i lambdafunksjonen for å ta hensyn til miljø: 
+  ```
+  event.requestContext.stage + "-" + TABLE_NAME;
+  ```
 - `sls deploy --stage <miljo>` vil deploye hele servicen til et nytt miljø. Kjør kommandoen og verifiser at du har fått opprettet nye tjenester med prefix `<miljo>-`
 
 ### Lokal kjøring av lambdafunksjoner
