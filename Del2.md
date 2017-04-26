@@ -139,13 +139,12 @@ Serverless Framework har støtte for å kjøre lambdafunksjonene lokalt ved å e
 
 ### Versjonering av lambdafunksjoner
 
-Lambdafunksjoner har støtte for såkalte versjoner og aliaser som gjør det mulig å ha ulike versjoner av samme lambdafunksjon. Dette er dokumentert [her](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+Lambdafunksjoner har støtte for såkalte versjoner og aliaser som gjør det mulig å ha ulike versjoner av samme lambdafunksjon. Dette er dokumentert [her](http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html). Du kan også lese mer om det [her](https://aws.amazon.com/blogs/compute/using-api-gateway-stage-variables-to-manage-lambda-functions/).
 
 API Gateway kan videre peke på ulike aliaser av lambdafunksjoner, noe som gjør det mulig å ha ulike versjoner av lambdafunksjonene i de ulike API Gateway `stagene`.
 
-- Målet med denne oppgaven er å opprette to aliaser av lambdafunksjonen din, en `dev` og en `prod` som peker på to ulike versjoner av lambdafunksjonen din
-- Videre må du opprette et nytt stage i API Gatewayen
-- Opprett så stagevariabler, en for hvert stage, som har verdiene `dev` og `prod`.
-- For å få til dette må du opprette såkalte stage variabler for hvert stage som du refererer til i integrasjonsoppsettet
-- For å referere til en stagevariable: Gå under _Integration Type_ -> _Lambda Function_ og legg til en referanse til stagevariablen slik `MinLambda:${stageVariables.lambdaAlias}`
+- Opprett to aliaser av lambdafunksjonen din, en `dev` og en `prod` som peker på to ulike versjoner av lambdafunksjonen din
+- Opprett et nytt stage i API Gatewayen `prod`
+- Opprett så stagevariabler, en for hvert stage, som har nøkkelen `lambdaAlias` og verdiene `dev` og `prod`.
+- Videre må du referere til stagevariablen i integrasjonsoppsettet: Under _Integration Type_ -> _Lambda Function_, legg til en referanse til stagevariablen slik `MinLambda:${stageVariables.lambdaAlias}`
 - Etter at API Gateway stagene dine peker på ulike aliaser, prøv å oppdatere lambdafunksjonene dine med ny kode (f.eks. printing til konsollet), først i `dev` og så i `prod`
