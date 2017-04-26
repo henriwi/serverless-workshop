@@ -42,7 +42,7 @@ Vi skal, som i del 1, starte med å sette opp en DynamoDB-tabell. Dette gjøres 
 - Sett opp en DynamoDB-tabell under `resources` i `serverless.yml`. Tabellen skal være helt lik den vi lagde i del 1
   - Tabellnavn i DynamoDB er unike, bruk derfor et annet navn enn i del 1
   - Attributtene til tabellene defineres i `AttributeDefinitions`
-  - `PrimaryKey` og `SortKey` defineres i `KeySchema`
+  - `PrimaryKey` og `SortKey` defineres i `KeySchema`. `PrimaryKey` er `HASH` og `SortKey` er `RANGE`.
   - Du kan lese mer om oppsett av DynamoDB-tabeller med CloudFormation [her](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html)
 
 ### Deploy databasen
