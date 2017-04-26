@@ -45,7 +45,7 @@ Lambdaen din er nå opprettet. Vi fortsetter med å sette opp API og frontend.
 ### Deploy og test API-et
 - Velg _Actions_ -> _Deploy API_
 - Lag et nytt deployment stage, bruk gjerne navnet `prod`
-- Test API-et ved å klikke på _Invoke URL_. Legg på `/api` på slutten, slik at du får en URL på formatet `https://<id>.execute-api.<region>.amazonaws.com/prod` Du bør få følgende output:
+- Test API-et ved å klikke på _Invoke URL_. Legg på `/api` på slutten, slik at du får en URL på formatet `https://<id>.execute-api.<region>.amazonaws.com/prod/api` Du bør få følgende output:
 
 ```
 {
