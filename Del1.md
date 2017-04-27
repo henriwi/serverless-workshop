@@ -100,7 +100,7 @@ Vi skrur altså av all caching på backenden. I et reellt scenario vil man tune 
 
 Nå tar det en god stund før distribusjonen er ferdig satt opp. Ta deg en kaffe i mellomtiden.
 
-Det var det! Hvis du når går til `http://<din-distribusjon>.cloudfront.net/` skal Todo-appen fungere 🚀
+Det var det! Hvis du når går til URLen som ligger i `Domain Name`-kolonnen skal Todo-appen fungere 🚀
 
 ## Sjekke logger? 🕵
 
