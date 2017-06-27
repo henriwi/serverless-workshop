@@ -15,7 +15,7 @@ var _uuid2 = _interopRequireDefault(_uuid);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var URL = '/api';
+var URL = '/todos';
 
 function saveTodos(todos) {
   return {

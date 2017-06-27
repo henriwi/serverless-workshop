@@ -35,7 +35,7 @@ Lambdaen din er nå opprettet. Vi fortsetter med å sette opp API og frontend.
 
 ### Opprett API med ressurs som trigger lambda
 - Opprett et nytt API i API Gateway
-- Velg _Actions_ -> _Create Resource_ med path `/api`. Gi ressursen et valgfritt navn og klikk _Create resource_
+- Velg _Actions_ -> _Create Resource_ med path `/todos`. Gi ressursen et valgfritt navn og klikk _Create resource_
 - Marker den nyopprettede ressursen og opprett en ny metode på denne med _Actions_ -> _Create method_
 - Velg `ANY` i dropdownen for å lage en handler for alle HTTP-metoder
 - Velg Integration type _Lambda Function_
@@ -45,7 +45,7 @@ Lambdaen din er nå opprettet. Vi fortsetter med å sette opp API og frontend.
 ### Deploy og test API-et
 - Velg _Actions_ -> _Deploy API_
 - Lag et nytt deployment stage, bruk gjerne navnet `prod`
-- Test API-et ved å klikke på _Invoke URL_. Legg på `/api` på slutten, slik at du får en URL på formatet `https://<id>.execute-api.<region>.amazonaws.com/prod/api` Du bør få følgende output:
+- Test API-et ved å klikke på _Invoke URL_. Legg på `/todos` på slutten, slik at du får en URL på formatet `https://<id>.execute-api.<region>.amazonaws.com/prod/todos` Du bør få følgende output:
 
 ```
 {
@@ -58,7 +58,8 @@ Lambdaen din er nå opprettet. Vi fortsetter med å sette opp API og frontend.
 Vi skal nå deploye en frontend som benytter seg av API-et vårt.
 
 ## S3
-- Opprett en S3-bucket
+Vi har opprettet S3-buckets med navnene `jz-bucket-1`, `jz-bucket-2`, osv.
+- Finn S3-bucketen med samme nummer som brukeren din.
 - Last opp [`index.html`](frontend/index.html) og hele [`static/`](frontend/static)-katalogen
 
 Til slutt lager vi en Cloudfront-distribusjon som ligger foran S3-bucketen og API-et vårt
@@ -83,13 +84,13 @@ Nå må vi lage en ny origin for API-et, med tilhørende behavior.
 
 - Gå inn i administrasjonspanelet for distribusjonen du opprettet i forrige steg
 - Under _Origins_, velg _Create Origin_
-- Lim inn URL-en til API-et ditt i _Origin Domain Name_. Den vil automatisk splittes slik at API-ets deployment stage (f.eks. `/prod`) legges inn i _Origin Path_. Merk at du ikke skal ha med `/api`-delen på URL-en du limer inn her.
+- Lim inn URL-en til API-et ditt i _Origin Domain Name_. Den vil automatisk splittes slik at API-ets deployment stage (f.eks. `/prod`) legges inn i _Origin Path_. Merk at du ikke skal ha med `/todos`-delen på URL-en du limer inn her.
 - Velg _HTTPS Only_ og klikk _Create_
 
 Vi må nå lage en _behavior_ som ruter trafikk på visse ruter videre til API-et.
 
 - Lag en ny behavior
-- Skriv `/api`i _Path Pattern_
+- Skriv `/todos`i _Path Pattern_
 - Velg origin til API-et under _Origin_
 - _Redirect HTTP to HTTPS_
 - Velg _Allowed HTTP Methods_ `GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE`

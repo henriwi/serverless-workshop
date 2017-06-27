@@ -1,6 +1,6 @@
 import uuid from 'uuid';
 
-const URL = '/api';
+const URL = '/todos';
 
 function saveTodos(todos) {
   return {

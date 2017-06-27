@@ -63,7 +63,7 @@ Kjør `sls deploy` igjen, og sjekk i webkonsollet at lambdafunksjonen har blitt 
 Som i del 1 skal vi trigge lambdaen via API Gateway. Les om hvordan dette gjøres [her](https://serverless.com/framework/docs/providers/aws/events/apigateway/).
 
 - Vi ønsker å sette opp integrasjonen med `Lambda Proxy Integration`
-- For at API-gatewayen skal fungere med frontenden vår og CloudFront er det viktig at pathen til ressursen i APIet er `/api` , på samme måte som i del 1
+- For at API-gatewayen skal fungere med frontenden vår og CloudFront er det viktig at pathen til ressursen i APIet er `/todos` , på samme måte som i del 1.
 
 ### Deploy gateway
 Kjør `sls deploy` igjen, og sjekk i webkonsollet at API-gatewayen har blitt opprettet korrekt. Endepunktet som skrives ut i terminalen etter `sls deploy` vil ikke fungere før du setter opp tilganger i neste punkt.
@@ -99,10 +99,10 @@ Test ut følgende kommandoer for å legge inn og hente ut _todos_. Test gjerne k
 - `curl -X POST -H "Content-Type: application/json" -d '{"key":"key1","text":"test"}' <url-til-api>` vil legge inn en ny todo. Merk at `key` må være unik.
 
 ## Frontend og CloudFront
-Frontenden vår går fortsatt til det gamle API-et vårt. Nå skal vi gå inn i CloudFront og endre routingen slik at `/api` peker til vår nyopprettede API Gateway istedenfor den gamle.
+Frontenden vår går fortsatt til det gamle API-et vårt. Nå skal vi gå inn i CloudFront og endre routingen slik at `/todos` peker til vår nyopprettede API Gateway istedenfor den gamle.
 
 - Opprett en ny *origin* for API-et vi har deployet med Servlerless Framework. Dette gjøres på samme måte som i [del 1](Del1.md#backend)
-- Endre *behaviour* slik at trafikk på `/api` blir routet til den nye *origin*, og dermed til vårt nye API
+- Endre *behaviour* slik at trafikk på `/todos` blir routet til den nye *origin*, og dermed til vårt nye API
 
 Når du nå tester frontenden skal CloudFront route forespørslene til den nye API-gatewayen, og hente data fra en ny DynamoDB-tabell. Test at dette virker ved at du fortsatt får lagt inn og slettet elementer.
 
@@ -123,7 +123,7 @@ Serverless Framework kan brukes til å deploye servicen vår til et helt nytt mi
 
 - Først må navnet til DynamoDB-tabellen ta hensyn til `stage` slik at vi unngår navnekonflikter når vi deployer et nytt miljø
 - I `serverless.yml` erstatt navnet til DynamoDB-tabellen med `${opt:stage, self:provider.stage}-<tabellnavn>`. Dette gjør at man bruker default stage (dev) fra konfigurasjonen, med mulig overstyring fra kommandolinjen
-- Når tabellen har blitt prefixet med miljø, må lambdakoden også ta hensyn til dette. Legg til følgende kode i lambdafunksjonen for å ta hensyn til miljø: 
+- Når tabellen har blitt prefixet med miljø, må lambdakoden også ta hensyn til dette. Legg til følgende kode i lambdafunksjonen for å ta hensyn til miljø:
   ```
   event.requestContext.stage + "-" + TABLE_NAME;
   ```
