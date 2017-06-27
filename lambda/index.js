@@ -6,7 +6,7 @@ const doc = require('dynamodb-doc');
 
 const dynamo = new doc.DynamoDB();
 
-const TABLE = "todo"
+const TABLE = "todos"
 
 /**
  * Demonstrates a simple HTTP endpoint using API Gateway. You have full
@@ -23,9 +23,9 @@ exports.handler = (event, context, callback) => {
 
     const done = (err, res) => {
         if (err) {
-            console.log("Feil ved " + event.httpMethod + "'ing: " + err);
+            console.log("Feil ved " + event.httpMethod + ": " + err);
         } else {
-            console.log("Resultat ved " + event.httpMethod + "'ing: " + res);
+            console.log("Resultat ved " + event.httpMethod + ": " + res);
         }
         return callback(null, {
             statusCode: err ? '400' : '200',
@@ -35,6 +35,10 @@ exports.handler = (event, context, callback) => {
             },
         })
     };
+
+    if (!event.httpMethod) {
+        callback(null, "Hello, World fra Lambdafunksjonen!")
+    }
 
     switch (event.httpMethod) {
         case 'DELETE':
@@ -50,4 +54,3 @@ exports.handler = (event, context, callback) => {
             done(new Error(`Ukjent HTTP-metode. Du sendte inn følgende event:` + JSON.stringify(event)));
     }
 };
-
