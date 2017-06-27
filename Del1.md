@@ -11,7 +11,8 @@ Vi setter opp tjenestene i samme rekkefølge som de ble gjennomgått på slidene
 ## DynamoDB
 Lag en ny tabell i DynamoDB
 
-- Lag _Primary key_ med navnet`key`, type string
+- Gi tabellen et valgfritt navn
+- Lag _Primary (partition) key_ med navnet`key`, type string
 - Lag _Sort key_ med navnet `text`, type string
 - Bruk ellers default settings
 - Notér deg navnet på tabellen
@@ -23,13 +24,13 @@ Lag en ny Lambda-funksjon.
 - Ikke sett opp noen triggere, dette gjør vi senere
 - Gi Lambdaen din et navn
 - Velg runtime _Node.js 6.10_ (default)
-- Lim inn koden fra [`lambda/index.js`](lambda/index.js). Erstatt variabelen `TABLE` med navnet på DynamoDB-tabellen.
-- Under _Role_, velg _Create new role from templates_
+- Erstatt koden i tekstboksen med koden fra [`lambda/index.js`](lambda/index.js). Erstatt variabelen `TABLE` med navnet på DynamoDB-tabellen din.
+- Under _Role_, la _Create new role from templates_ stå
   - Gi rollen et navn og velg _Simple Microservice permissions_ under Policy templates
 - La resten stå som default, klikk _Next_ og _Create function_
-- Test Lambdaen din ved å trykke på _Test_. Du skal forvente output som begynner med _"Ukjent HTTP-metode ..."_
+- Test Lambdaen din ved å trykke på _Test_. Lambdaen skal svare med en variant av "Hello World!".
 
-Lambdaen din er nå opprettet. Vi fortsetter med å sette opp API og frontend.
+Nå er lambdafunksjonen din opprettet. Vi fortsetter med å sette opp API og frontend.
 
 ## API Gateway
 
@@ -70,7 +71,7 @@ Til slutt lager vi en Cloudfront-distribusjon som ligger foran S3-bucketen og AP
 Gå inn i Cloudfront-konsollet og opprett en ny distribusjon
 
 - Velg _Web_
-- _Origin Domain Name_: Velg din bucket
+- _Origin Domain Name_: Velg originet i nedtrekkslista som svarer til din S3-bucket
 - La _Origin Path_ være blank
 - Velg _Restrict bucket access_ og _Create a New Identity_. Velg _Yes, Update Bucket Policy_
 - Velg _Redirect HTTP to HTTPS_
