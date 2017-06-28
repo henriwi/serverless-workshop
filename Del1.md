@@ -9,7 +9,10 @@ Vi setter opp tjenestene i samme rekkefølge som de ble gjennomgått på slidene
 5. [Cloudfront](#cloudfront)
 
 ## DynamoDB
-Lag en ny tabell i DynamoDB
+<img src="http://cdn.markomedia.com.au/wp-content/uploads/2015/03/DynamoDB.svg_.png" style="float:left;">
+DynamoDB er en "fully managed", skjemaløs NoSQL-database fra Amazon, og blir brukt til å lagre todoene i vår applikasjon.
+
+Finn frem til DynamoDB i AWS-konsollet, og klikk _"Create table"_ for å lage en ny tabell.
 
 - Gi tabellen et valgfritt navn
 - Lag _Primary (partition) key_ med navnet`key`, type string
