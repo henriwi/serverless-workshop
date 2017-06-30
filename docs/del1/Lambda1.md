@@ -10,12 +10,12 @@ Finn frem til Lambda i AWS-konsollet og klikk _"Get started now"_ eller _"Create
 - Ikke sett opp noen triggere, dette gjør vi senere
 - Gi Lambdaen din et valgfritt navn
 - Velg runtime _Node.js 6.10_ (default)
-- Koden i tekstboksen erstattes med koden fra [`lambda/helloworld.js`](./lambda/helloworld.js). Variabelen `TABLE` erstattes med navnet på DynamoDB-tabellen din.
+- Koden i tekstboksen erstattes med koden fra [`lambda/helloworld.js`](../lambda/helloworld.js). Variabelen `TABLE` erstattes med navnet på DynamoDB-tabellen din.
 - Under _Role_, la _Create new role from templates_ stå
   - Gi rollen et navn og velg _Simple Microservice permissions_ under Policy templates
 - La resten stå som default, klikk _Next_ og _Create function_
 - Test Lambdaen din ved å trykke på _Test_.
-  - Erstatt eventet i tekstboksen med testeventet du finner her: [`lambda/testevent.json`](./lambda.testevent.json)
+  - Erstatt eventet i tekstboksen med testeventet du finner her: [`lambda/testevent.json`](../lambda.testevent.json)
   - Lambdaen skal svare med en variant av "Hello World!".
 
 Da er første versjon av Lambdafunksjonen ferdig. Vi har fått testet den manuelt, men for å kunne trigge den over HTTP må vi sette opp en API Gateway. Det gjør vi i neste del.
