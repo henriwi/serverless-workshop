@@ -4,11 +4,9 @@
 
 * [Introduksjon](README.md)
 
-### Sette opp applikasjon
-
-* [Introduksjon](del1/Introduksjon.md)
-* [Lambda](del1/Lambda.md)
-* [API Gateway](del1/API-Gateway.md)
+* [Sette opp applikasjon](del1/Introduksjon.md)
+    * [Lambda](del1/Lambda.md)
+    * [API Gateway](del1/API-Gateway.md)
 
 ### Automatisere oppsett
 

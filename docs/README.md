@@ -1,18 +1,8 @@
 # Introduksjon til serverless på Amazon Web services
 
-Velkommen til workshop!
+Målet med denne workshopen er å gi en introduksjon til serverless-konseptet, med oppgaver eksempler på Amazon Web Services (AWS). I løpet av workshopen setter dere opp en fullstendig webapplikasjon, utelukkende basert på serverless-teknologier hos AWS. Workshopen er delt i 3:
 
-[Her kan du laste ned slidene](slides.pdf) for workshopen. Vi har lagt inn noen skjulte slides med informasjon om de enkelte AWS-tjenestene vi bruker i workshopen.
+- Manuelt oppsett av applikasjon i webkonsollet til AWS
+- Automatisert oppsett ved bruk av Serverless Framework
+- Mer avanserte oppgaver
 
-## Innlogging på AWS
-
-Dere logger inn i AWS-konsollet på https://serverless-javazone.signin.aws.amazon.com/console.
-
-Brukernavn og passord får dere utdelt på workshopen.
-
-## Oppgaver
-
-Oppgavene dere skal jobbe med finner dere her:
-
-- [Del 1](Del1.md)
-- [Del 2](Del2.md)

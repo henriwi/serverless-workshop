@@ -2,6 +2,7 @@
 
 Velkommen til workshop!
 
-[Her kan du laste ned slidene](slides.pdf) for workshopen. Vi har lagt inn noen skjulte slides med informasjon om de enkelte AWS-tjenestene vi bruker i workshopen.
+Her kan du laste ned slidene fra presentasjonen i [Keynote](slides.key)- eller [PDF](slides.pdf)-format. Vi har lagt inn noen skjulte slides med informasjon om de enkelte AWS-tjenestene vi bruker i workshopen.
 
-Oppgavetekst på [GitBook](https://henriwi.gitbooks.io/serverless-workshop/)
+Oppgaver og teoristoff ligger samlet som et eget [kompendium på GitBook](https://henriwi.gitbooks.io/serverless-workshop/).
+
