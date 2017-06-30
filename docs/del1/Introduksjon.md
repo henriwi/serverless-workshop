@@ -1,12 +1,27 @@
-# Del 1 – manuelt oppsett av fullstack serverless applikasjon i AWS web console
+# Del 1 – manuelt oppsett av fullstack serverless applikasjon i webkonsollet til AWS
 
-Vi setter opp tjenestene i samme rekkefølge som de ble gjennomgått på slidene:
+I workshopens første del skal vi sette opp en fullstack serverless applikasjon på AWS. I denne delen gjør vi all konfigurasjon manuelt gjennom webkonsollet til AWS.
 
-1. [DynamoDB](#dynamodb)
-2. [Lambda](#lambda)
-3. [API Gateway](#api-gateway)
-4. [S3](#s3)
-5. [Cloudfront](#cloudfront)
+Vi setter opp tjenestene i følgende rekkefølge:
+
+1. Lambda
+2. API Gateway
+3. DynamoDB
+4. S3
+5. Cloudfront
+
+Start med å logge deg inn i webkonsollet til AWS. Innloggingslenke, brukernavn og passord får du utdelt på workshopen.
+
+Innlogget? Da kan du klikke deg videre til første del, oppsett av Lambdafunksjonen.
+
+
+
+
+# SLETT ALT UNDER HEWR
+
+
+
+
 
 ## DynamoDB
 Vi starter med å opprette DynamoDB-tabellen som skal holde på todoene i applikasjonen vår. Finn frem til DynamoDB i AWS-konsollet, og klikk _"Create table"_ for å lage en ny tabell.

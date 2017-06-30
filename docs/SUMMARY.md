@@ -4,9 +4,15 @@
 
 * [Introduksjon](README.md)
 
-* [Sette opp applikasjon](del1/Introduksjon.md)
-    * [Lambda](del1/Lambda.md)
-    * [API Gateway](del1/API-Gateway.md)
+### Sette opp applikasjon
+
+* [Introduksjon](del1/Introduksjon.md)
+* [Lambda 1](del1/Lambda1.md)
+* [API Gateway](del1/API-Gateway.md)
+* [Lambda 2](del1/Lambda2.md)
+* [DynamoDB](del1/DynamoDB.md)
+* [S3](del1/S3.md)
+* [Cloudfront](del1/Cloudfront.md)
 
 ### Automatisere oppsett
 
@@ -17,4 +23,4 @@
 
 * [Introduksjon](del3/Introduksjon.md)
 * [Ytelsestest](del3/Ytelsestest.md)
-* [Slack-integrasjon](del3/Slack-integrasjon.md)
+*m [Slack-integrasjon](del3/Slack-integrasjon.md)
