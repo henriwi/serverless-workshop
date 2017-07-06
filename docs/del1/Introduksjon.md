@@ -1,6 +1,6 @@
-# Del 1 – manuelt oppsett av fullstack serverless applikasjon i webkonsollet til AWS
+# Manuelt oppsett i webkonsollet til AWS
 
-I workshopens første del skal vi sette opp en fullstack serverless applikasjon på AWS. I denne delen gjør vi all konfigurasjon manuelt gjennom webkonsollet til AWS.
+I workshopens første del skal vi sette opp en fullstack webapplikasjon på AWS, kun ved bruk av ulike serverless-tjenester. I denne delen gjør vi all konfigurasjon manuelt gjennom webkonsollet til AWS.
 
 Vi setter opp tjenestene i følgende rekkefølge:
 
@@ -17,7 +17,7 @@ Innlogget? Da kan du klikke deg videre til første del, oppsett av Lambdafunksjo
 
 
 
-# SLETT ALT UNDER HEWR
+# TODO: SLETT ALT UNDER HEWR
 
 
 

@@ -18,4 +18,4 @@ That's it! Finn frem test URL-en til API-et som du brukte i stad og prøv på ny
 }
 ```
 
-Rått! Da er backenden helt ferdig. I neste steg deployer vi en frontend som benytter API-et vårt.
+Glimrende! Da er backenden helt ferdig. I neste steg deployer vi en frontend som benytter API-et vårt.
