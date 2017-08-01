@@ -21,8 +21,8 @@
 * [DynamoDB](del2/DynamoDB.md)
 * [Funksjoner](del2/Funksjoner.md)
 * [Events](del2/Events.md)
-* [Events](del2/Verifiser.md)
-* [Events](del2/Cloudfront.md)
+* [Deploy og verifisering](del2/Verifiser.md)
+* [Cloudfront](del2/Cloudfront.md)
 
 
 ### Avanserte oppgaver
