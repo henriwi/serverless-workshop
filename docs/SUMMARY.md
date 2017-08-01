@@ -16,7 +16,13 @@
 
 ### Automatisere oppsett
 
-* [Serverless Framework](del2/Serverless-Framework.md)
+* [Introduksjon til Serverless Framework](del2/Introduksjon.md)
+* [Service](del2/Service.md)
+* [DynamoDB](del2/DynamoDB.md)
+* [Funksjoner](del2/Funksjoner.md)
+* [Events](del2/Events.md)
+* [Events](del2/Verifiser.md)
+* [Events](del2/Cloudfront.md)
 
 
 ### Avanserte oppgaver

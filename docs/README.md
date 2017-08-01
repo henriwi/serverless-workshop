@@ -5,7 +5,7 @@ Målet med denne workshopen er å gi en introduksjon til serverless-konseptet, m
 Workshopen er delt i 3:
 
 - [Manuelt oppsett av applikasjon i webkonsollet til AWS](del1/Introduksjon.md)
-- [Automatisert oppsett ved bruk av Serverless Framework](del2/Serverless-Framework.md)
+- [Automatisert oppsett ved bruk av Serverless Framework](del2/Introduksjon.md)
 - [Avanserte oppgaver](del3/Introduksjon.md)
 
 En demo av applikasjonen vi setter opp i workshopen finner du her: TODO: Url til appen her
