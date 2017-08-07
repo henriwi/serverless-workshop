@@ -7,7 +7,7 @@ Siste steg er å sette opp en Cloudfront-distribusjon som ligger foran både fro
 Vår oppsett i Cloudfront består av flere deler.
 
 ### Distribusjon
-_Distribusjoner_ er det øverste konseptet i Cloudfront. På en distrbusjon setter man opp regler, kalt _behaviors_,for å rute trafikk på ulike URL-er videre til separate mål, kalt  _origins_. På denne måten kan man samle flere webtjenester under samme domene.
+_Distribusjoner_ er det øverste konseptet i Cloudfront. På en distribusjon setter man opp regler, kalt _behaviors_, for å rute trafikk på ulike URL-er videre til separate mål, kalt  _origins_. På denne måten kan man samle flere webtjenester under samme domene.
 
 Hver distribusjon i Cloudfront får sin egen URL, på formatet `https://<din-cloudfront-id>.cloundfront.net`. Man kan også sette opp egne domener og sertifikater om man ønsker.
 
@@ -57,6 +57,6 @@ Vi skrur altså av all caching på backenden. I et reellt scenario vil man juste
 
 Det tar rundt 10 minutter for AWS å provisjonere opp Cloudfront-distribusjonen din. Ta deg en kaffe i mellomtiden.
 
-Det var det! Hvis du når går til URLen som ligger i `Domain Name`-kolonnen skal Todo-appen fungere 🚀
+Det var det! Hvis du nå går tilbake til dashboardet for Cloudfront og åpner URLen som ligger i `Domain Name`-kolonnen skal Todo-appen fungere 🚀
 
 
