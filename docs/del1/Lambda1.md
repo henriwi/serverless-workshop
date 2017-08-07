@@ -14,7 +14,7 @@ Finn frem til Lambda i AWS-konsollet og klikk _"Get started now"_ eller _"Create
 
 {% codesnippet "./lambda/helloworld.js" %} {% endcodesnippet %}
 
-- Under _Role_, la _Create new role from templates_ stå
+- Under _Role_, velg _Create new role from templates_
   - Gi rollen et navn og velg _Simple Microservice permissions_ under Policy templates
 - La resten stå som default, klikk _Next_ og _Create function_
 - Test Lambdaen din ved å trykke på _Test_

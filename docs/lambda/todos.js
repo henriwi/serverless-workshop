@@ -1,23 +1,11 @@
 'use strict';
 
-console.log('Loading function');
-
 const doc = require('dynamodb-doc');
 
 const dynamo = new doc.DynamoDB();
 
 const TABLE = "todos"
 
-/**
- * Demonstrates a simple HTTP endpoint using API Gateway. You have full
- * access to the request and response payload, including headers and
- * status code.
- *
- * To scan a DynamoDB table, make a GET request with the TableName as a
- * query string parameter. To put, update, or delete an item, make a POST,
- * PUT, or DELETE request respectively, passing in the payload to the
- * DynamoDB API as a JSON body.
- */
 exports.handler = (event, context, callback) => {
     console.log("Mottok lambda-event: ", JSON.stringify(event));
 
@@ -37,7 +25,7 @@ exports.handler = (event, context, callback) => {
     };
 
     if (!event.httpMethod) {
-        callback(null, "Hello, World fra Lambdafunksjonen!")
+        done(new Error(`Fant ingen HTTP-metode på eventet. Du sendte inn følgende event: ` + JSON.stringify(event)));
     }
 
     switch (event.httpMethod) {
@@ -51,6 +39,6 @@ exports.handler = (event, context, callback) => {
             dynamo.putItem({ TableName: TABLE, Item: JSON.parse(event.body) }, done)
             break;
         default:
-            done(new Error(`Ukjent HTTP-metode. Du sendte inn følgende event:` + JSON.stringify(event)));
+            done(new Error(`Ulovlig HTTP-metode. Kun GET, POST og DELETE er tillatt. Du sendte inn følgende event:` + JSON.stringify(event)));
     }
 };
