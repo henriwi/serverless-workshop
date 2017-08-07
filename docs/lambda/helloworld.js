@@ -17,8 +17,8 @@ exports.handler = (event, context, callback) => {
     if (event.type === "testevent") {
         callback(null, event.message);
     } else if (event.httpMethod) {
-        callback(null, "Hello World via API Gateway);
-    }else {
+        callback(null, "Hello World via API Gateway");
+    } else {
         callback("Mottok ukjent Lambda-event");
     }
 }

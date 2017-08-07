@@ -1,4 +1,4 @@
 {
   "root": "./docs",
-  plugins: ["-sharing", "-comment"]
+  plugins: ["-sharing", "-comment", "codesnippet"]
 }
