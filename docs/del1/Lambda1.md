@@ -12,7 +12,7 @@ Finn frem til Lambda i AWS-konsollet og klikk _"Get started now"_ eller _"Create
 - Velg runtime _Node.js 6.10_ (default)
 - Koden i tekstboksen erstattes med følgende kode:
 
-{% codesnippet "../lambda/helloworld.js" %} {$ endcodesnippet %}
+{% codesnippet "../lambda/helloworld.js" %} {% endcodesnippet %}
 
 - Under _Role_, la _Create new role from templates_ stå
   - Gi rollen et navn og velg _Simple Microservice permissions_ under Policy templates
@@ -20,7 +20,7 @@ Finn frem til Lambda i AWS-konsollet og klikk _"Get started now"_ eller _"Create
 - Test Lambdaen din ved å trykke på _Test_
 - Erstatt eventet i tekstboksen med følgende event:
 
-{% codesnippet "../lambda/testevent.json" %} {$ endcodesnippet %}
+{% codesnippet "../lambda/testevent.json" %} {% endcodesnippet %}
 
 Svarer lambdaen med en variant av _"Hello World!"_? Glimrende!
 
