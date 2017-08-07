@@ -14,7 +14,7 @@ Start med å åpne API Gateway i AWS-konsollet
 - Opprett et nytt API med et valgfritt navn
 - I menyen, velg _Actions_ -> _Create Resource_ og bruk path `/todos`. Gi ressursen et valgfritt navn og klikk _Create resource_
 
-Vi har nå laget en REST-ressurs, men vi har ikke definert hvordan ressursen håndterer innkommende HTTP-requester. TODO: Er denne formuleringen god? Bedre bro her.
+Vi har nå laget en REST-ressurs. For å definere hvordan ressursen håndterer innkommende HTTP-requester må vi lage en action.
 
 ### Action for å håndtere innkommende requests
 - Marker den nyopprettede ressursen og opprett en ny metode på denne med _Actions_ -> _Create method_
@@ -22,8 +22,9 @@ Vi har nå laget en REST-ressurs, men vi har ikke definert hvordan ressursen hå
 - Velg Integration type _Lambda Function_
 - Velg _Use Lambda Proxy integration_
 - Velg regionen der Lambdaen ligger og skriv inn navnet på lambdaen
+- Trykk _Save_
 
-API-et er nå ferdig konfigurerto, og vil sende alle innkommende HTTP-requester rett videre til Lambdaen, uten å modifiere hverken request eller respons. API-et kan riktig ikke brukes før det _deployes_. API Gateway har et begrep om _"deployment stages"_, som muliggjør versjons- og miljøkontroll. I denne workshopen klarer vi oss med ett stage/ett miljø.
+API-et er nå ferdig konfigurert, og vil sende alle innkommende HTTP-requester rett videre til Lambdaen, uten å modifisere hverken request eller respons. API-et kan riktignok ikke brukes før det _deployes_. API Gateway har et begrep om _"deployment stages"_, som muliggjør versjons- og miljøkontroll. I denne workshopen klarer vi oss med ett stage/ett miljø.
 
 ### Deploy og test API-et
 - Velg _Actions_ -> _Deploy API_
