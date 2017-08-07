@@ -1,4 +1,4 @@
 {
-  type: "testevent",
-  message: "Hello World fra Lambdafunksjonen!"
+  "type": "testevent",
+  "message": "Hello World fra Lambdafunksjonen!"
 }
