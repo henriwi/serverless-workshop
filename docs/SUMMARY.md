@@ -18,8 +18,8 @@
 
 * [Introduksjon til Serverless Framework](del2/Introduksjon.md)
 * [Service](del2/Service.md)
-* [DynamoDB](del2/DynamoDB.md)
 * [Funksjoner](del2/Funksjoner.md)
+* [DynamoDB](del2/DynamoDB.md)
 * [Events](del2/Events.md)
 * [Deploy og verifisering](del2/Verifiser.md)
 * [Cloudfront](del2/Cloudfront.md)

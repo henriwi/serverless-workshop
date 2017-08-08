@@ -9,14 +9,8 @@ Det første vi skal sette opp med Serverless Framework er en *service*. En servi
 
 Du har nå fått opprettet en template til en service, og all konfigurasjon til servicen ligger i filen `serverless.yml`. Åpne den opp å ta en titt!
 
-Før vi går videre må du gjøre to ting i `serverless.yml`:
+Før vi går videre må du gjøre en ting i `serverless.yml`:
 
-1. Fjern kommentaren for region og endre til ønsket region, for eksempel `eu-central-1`
-2. Kommenter ut (med `#`) følgende seksjon som omhandler *functions* da vi kommer tilbake til dette snart. Med kommentarer bør *functions*-blokken se slik ut:
-```
-#functions:
-#  hello:
-#    handler: handler.hello
-```
+- Fjern kommentaren for region og endre til ønsket region, for eksempel `eu-central-1`
 
 Nå som servicen vår har blitt opprettet, er vi klare for å opprette de ulike ressursene som applikasjonen vår består av.
