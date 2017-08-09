@@ -12,9 +12,3 @@ Frontenden vår går fortsatt mot det gamle API-et vårt. Nå skal vi gå inn i 
 - Endre *behaviour* slik at trafikk på `/todos` blir routet til den nye *origin*, og dermed til vårt nye API
 
 Når du nå tester frontenden skal CloudFront route forespørslene til den nye API-gatewayen, og hente data fra en ny DynamoDB-tabell. Test at dette virker ved at du fortsatt får lagt inn og slettet elementer.
-
-## Rydde opp
-
-Før du går for dagen må du fjerne alle komponentene vi har satt opp.
-
-- `sls remove` fjerner alle ressursene som har blitt satt opp med Serverless Framework

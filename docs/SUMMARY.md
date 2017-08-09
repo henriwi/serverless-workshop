@@ -29,4 +29,4 @@
 
 * [Introduksjon](del3/Introduksjon.md)
 * [Ytelsestest](del3/Ytelsestest.md)
-*m [Slack-integrasjon](del3/Slack-integrasjon.md)
+* [Slack-integrasjon](del3/Slack-integrasjon.md)
