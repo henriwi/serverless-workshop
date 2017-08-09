@@ -14,5 +14,5 @@ Før vi setter opp frontenden til å peke mot det nye APIet vårt, kan vi også 
 
 Test ut følgende kommandoer for å legge inn og hente ut _todos_. Test gjerne kommandoene vi kjørte ovenfor og hent ut logger og metrikker for lambdafunksjonene etter du har kalt APIet.
 
-- `curl GET <url-til-api>` vil hente ut alle todoene fra DynamoDB-tabellen
+- `curl -X GET <url-til-api>` vil hente ut alle todoene fra DynamoDB-tabellen
 - `curl -X POST -H "Content-Type: application/json" -d '{"key":"key1","text":"test"}' <url-til-api>` vil legge inn en ny todo. Merk at `key` må være unik.
