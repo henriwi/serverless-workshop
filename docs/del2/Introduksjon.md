@@ -1,8 +1,8 @@
 # Oppsett med Serverless framework
 
-I del 1 satte vi opp en fullstack webapplikasjon på AWS, kun ved bruk av ulike serverless-tjenester. Men hele applikasjon ble satt opp ved å manuelt gå gjennom webkonsollet til AWS. Ved å gjøre det på denne måten er det stor sannsynlighet for å gjøre feil, og det er ikke mulig å automatisere oppsettet. I denne delen av workshopen skal vi se derfor se på hvordan vi kan automatisere og forbedre måten å sette opp applikasjonen på.
+I del 1 satte vi opp en fullstack webapplikasjon på AWS, kun ved bruk av ulike serverless-tjenester. Men hele applikasjon ble satt opp ved å manuelt gå gjennom webkonsollet til AWS. Ved å gjøre det på denne måten er det stor sannsynlighet for å gjøre feil, og det er ikke mulig å automatisere oppsettet. I denne delen av workshopen skal vi se derfor se på hvordan vi kan sette opp applikasjonen fra del 1 med et verktøy som forbedrer arbeidsflyten.
 
-Det er flere verktøy som kan benyttes til dette, men vi har valgt å benytte Serverless Framework. Dette er et rammeverk som kan brukes til å konfigurere opp alle komponentene til applikasjon vår, og det kommer i tillegg med verktøy for å teste lambdafunksjonene våre, lese logger og hente ut ulike metrikker.
+Det er flere verktøy som kan benyttes til dette, men vi har valgt å benytte Serverless Framework. Dette er et rammeverk som kan brukes til å konfigurere opp alle komponentene til applikasjon vår, og det kommer i tillegg med verktøy for å teste lambdafunksjonene våre, lese logger og hente ut ulike metrikker. Serverless Framework støtter i tillegg til AWS også Microsoft Azure, IBM Open Whisk og Google Cloud Platform.
 
 > Servleress Framework er dokumentert [her](https://serverless.com/framework/docs/providers/aws/guide/intro/). Sjekk den gjerne ut for å se mer om hva Serverless Framework er og de grunnleggende konspetene som rammeverket tilbyr. Hvis du står fast anbefaler vi å ta en titt i dokumentasjonen, der står det ofte svar på det du lurer på.
 > 

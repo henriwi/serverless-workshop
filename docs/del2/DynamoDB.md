@@ -24,4 +24,20 @@ Nå som vi har en tabell, gå tilbake til lambdafunksjonen din som ligger i `han
 
 Kjør `sls deploy function -f <navn-på-funksjon>` for å deploye funksjonen til AWS.
 
-## TODO: Lag testevent som kan sendes inn til lambdafunksjonen og verifiser at det blir skrevet en todo til databasen.
+## Verifisere at data blir lagret i tabellen
+
+Nå som lambdafunksjonen er endret til å gå mot dynamodb-tabellen kan vi teste lambdafunksjonen på nytt og verifisere at vi får lagret data. Når man eksekverer en lambdafunksjon med serverless framework kan vi også sende med data som simulerer et event fra API Gateway.
+
+Kjør `sls invoke -f todo -d '{"body": "{\"key\":\"key2\",\"text\":\"test\"}","httpMethod": "POST"}'`. Forventet output er:
+
+```
+{
+    "statusCode": "200",
+    "body": "{}",
+    "headers": {
+        "Content-Type": "application/json"
+    }
+}
+```
+
+Finn tabellen din i AWS Consollet under DynamoDB og verifiser at dataene har blitt lagret i tabellen. Endre gjerne på innholdet i `key` eller `text` og kjør kommandoen flere ganger for å verifisere at all data blir lagret i tabellen.

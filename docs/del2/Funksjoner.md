@@ -1,8 +1,6 @@
 # Funksjoner
 Vi skal, som i del 1, starte med lambdafunksjonen vår. Men i motsetning til i del 1 skal vi denne gangen deploye lambdafunksjonen vår med Serverless Framework.
 
-
-
 - Erstatt innholdet i filen `handler.js` med følgende innhold. Dette er den samme funksjonen som ble brukt i del 1. **Merk at `exports.handler` må byttes ut med `module.exports.<navn-på-lambda>`**. Du velger selv hva lambdafunksjonen din skal hete
 
 {% codesnippet "./lambda/todos.js" %} {% endcodesnippet %}
