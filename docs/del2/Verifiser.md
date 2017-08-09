@@ -4,7 +4,7 @@ Serverless Framework kommer som sagt tidligere med en del muligheter for å test
 Test ut følgende kommandoer (og gjerne flere) mot tjenesten du nettopp har deployet:
 
 - `sls info` skriver ut informasjon om tjenesten du har deployet, inkludert URL-en til APIet ditt.
-- `sls invoke -f <navn-på-lambda>` vil eksekvere en spesifikk lambdafunksjon direkte (utenom API Gateway).
+- `sls invoke -f <navn-på-lambda> -d <data>` vil (som vi gjorde tidligere) eksekvere en spesifikk lambdafunksjon direkte og sende med <data> som input itl funksjonen.
 - `sls logs -f <navn-på-lambda>` printer loggene til en gitt lambdafunksjon. Dette er nyttig ved f.eks. feilsøking.
 - `sls metrics` gir grunnleggende metrikker om tjenesten din
 - `sls metrics -f <navn-på-lambda>` gir metrikker om en spesifikk lambda
