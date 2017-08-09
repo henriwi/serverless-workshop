@@ -41,7 +41,7 @@ Neste steg er å lage en origin for API-et.
 - Lim inn URL-en til API-et ditt i _Origin Domain Name_. Den vil automatisk splittes slik at API-ets deployment stage (f.eks. `/prod`) legges inn i _Origin Path_. Merk at du ikke skal ha med `/todos`-delen på URL-en du limer inn her.
 - Velg _HTTPS Only_ og klikk _Create_
 
-## Behavior for bakend
+## Behavior for backend
 
 Til slutt lager vi en behavior som ruter trafikk på visse ruter videre til API-et.
 
