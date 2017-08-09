@@ -1,4 +1,4 @@
-# Del 2 – Oppsett med [Serverless framework](https://serverless.com)
+# Oppsett med Serverless framework
 
 I del 1 satte vi opp en fullstack webapplikasjon på AWS, kun ved bruk av ulike serverless-tjenester. Men hele applikasjon ble satt opp ved å manuelt gå gjennom webkonsollet til AWS. Ved å gjøre det på denne måten er det stor sannsynlighet for å gjøre feil, og det er ikke mulig å automatisere oppsettet. I denne delen av workshopen skal vi se derfor se på hvordan vi kan automatisere og forbedre måten å sette opp applikasjonen på.
 
