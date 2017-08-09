@@ -1,4 +1,4 @@
-# Events
+# API Gateway
 
 Som i del 1 skal vi sette opp en API Gateway og konfigurere den slik at innkommende HTTP requester trigger lambdafunksjonen vår.
 

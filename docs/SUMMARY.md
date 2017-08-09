@@ -20,7 +20,7 @@
 * [Service](del2/Service.md)
 * [Funksjoner](del2/Funksjoner.md)
 * [DynamoDB](del2/DynamoDB.md)
-* [Events](del2/Events.md)
+* [API Gateway](del2/API-Gateway.md)
 * [Deploy og verifisering](del2/Verifiser.md)
 * [Cloudfront](del2/Cloudfront.md)
 
