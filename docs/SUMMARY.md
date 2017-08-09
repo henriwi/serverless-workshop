@@ -21,7 +21,7 @@
 * [Funksjoner](del2/Funksjoner.md)
 * [DynamoDB](del2/DynamoDB.md)
 * [API Gateway](del2/API-Gateway.md)
-* [Deploy og verifisering](del2/Verifiser.md)
+* [Verifiser og test](del2/Verifiser.md)
 * [Cloudfront](del2/Cloudfront.md)
 
 
