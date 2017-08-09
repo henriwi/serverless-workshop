@@ -22,4 +22,6 @@ For at lambdafunksjonen skal kunne lese og skrive til DynamoDB-tabellen vår, m�
 
 Nå som vi har en tabell, gå tilbake til lambdafunksjonen din som ligger i `handler.js` og erstatt verdien av variabelen `TABLE` med navnet på tabellen din.
 
+Kjør `sls deploy function -f <navn-på-funksjon>` for å deploye funksjonen til AWS.
+
 ## TODO: Lag testevent som kan sendes inn til lambdafunksjonen og verifiser at det blir skrevet en todo til databasen.

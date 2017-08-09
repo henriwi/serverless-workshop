@@ -1,12 +1,5 @@
-# Deploy og verifiser
-Da har vi definert alle delene av services vår.
-
-- Kjør `sls deploy` igjen for å deploye hele services din
-- Verifiser at de ulike ressursene (DynamoDB, API Gateway og Lambda) har blitt opprettet korrekt
-
-## Test
-Serverless Framework kommer med en del muligheter for å teste tjenesten din, samt hente ut ulike metrikker og lese logger.
-For en fullstendig oversikt over kommandoene som Serverless Framework tilbyr, se [her](https://serverless.com/framework/docs/providers/aws/cli-reference/).
+# Verifiser og test
+Serverless Framework kommer som sagt tidligere med en del muligheter for å teste tjenesten din, samt hente ut ulike metrikker og lese logger. For en fullstendig oversikt over kommandoene som Serverless Framework tilbyr, se [her](https://serverless.com/framework/docs/providers/aws/cli-reference/).
 
 Test ut følgende kommandoer (og gjerne flere) mot tjenesten du nettopp har deployet:
 
