@@ -13,3 +13,13 @@ Outline for oppgaven:
 
 Prep vi må gjøre:
 - Lage IAM-rolle de kan bruke direkte
+
+
+## Serverless-framework
+
+Utvide fungerende config for todo-appen i serverless.yml
+
+- Enable stream på DynamoDB-tabellen
+- Få ut ARN til streamen som output-variabel i configen
+- Sett opp ny lambdafunksjon med Kinesis-event som trigger og bruk ARN til streamen
+
