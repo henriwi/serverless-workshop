@@ -8,6 +8,6 @@ Workshopen er delt i 3:
 - [Automatisert oppsett ved bruk av Serverless Framework](del2/Introduksjon.md)
 - [Avanserte oppgaver](del3/Introduksjon.md)
 
-En demo av applikasjonen vi setter opp i workshopen finner du her: TODO: Url til appen her
+En demo av applikasjonen vi setter opp i workshopen finner du [her](https://d2rt9y4sv1dg49.cloudfront.net).
 
 Er du klar? Da setter vi i gang med [del 1](del1/Introduksjon.md).
