@@ -1,0 +1,34 @@
+{
+    "Records": [
+        {
+            "eventID": "0dd4b4d85bc72682894b4e9ce1fea838",
+            "eventName": "INSERT",
+            "eventVersion": "1.1",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "eu-central-1",
+            "dynamodb": {
+                "ApproximateCreationDateTime": 1503238980,
+                "Keys": {
+                    "text": {
+                        "S": "Halla"
+                    },
+                    "key": {
+                        "S": "1996877e-bc7d-4a3a-94f9-bf369a986083"
+                    }
+                },
+                "NewImage": {
+                    "text": {
+                        "S": "Halla"
+                    },
+                    "key": {
+                        "S": "1996877e-bc7d-4a3a-94f9-bf369a986083"
+                    }
+                },
+                "SequenceNumber": "2300000000001715385341",
+                "SizeBytes": 96,
+                "StreamViewType": "NEW_IMAGE"
+            },
+            "eventSourceARN": "arn:aws:dynamodb:eu-central-1:436890957976:table/demo-sls/stream/2017-08-20T13:46:45.272"
+        }
+    ]
+}
