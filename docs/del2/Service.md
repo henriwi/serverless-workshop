@@ -3,7 +3,7 @@ Det første vi skal sette opp med Serverless Framework er en *service*. En servi
 
 >Hvis du vil vite mer om servicer kan du lese om dette [her](https://serverless.com/framework/docs/providers/aws/guide/services/).
 
-- Opprett en ny, tom mappe, på maskinen din (den kan hete hva du ønsker). Naviger til mappen og kjør følgende kommando for å lage en service: `sls create --template aws-nodejs --path <selvvalgt-service-navn>`
+Opprett en ny, tom mappe, på maskinen din (den kan hete hva du ønsker). Naviger til mappen og kjør følgende kommando for å lage en service: `sls create --template aws-nodejs --path <selvvalgt-service-navn>`
 
 Serverless Frameowrk har nå laget en ny mappe som inneholder et par filer.
 

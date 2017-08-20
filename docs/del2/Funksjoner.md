@@ -2,7 +2,7 @@
 Vi skal, som i del 1, starte med lambdafunksjonen vår. Men i motsetning til i del 1 skal vi denne gangen deploye lambdafunksjonen vår med Serverless Framework.
 
 - Erstatt innholdet i filen `handler.js` med funksjonen nedenfor. Dette er den samme funksjonen som ble brukt i del 1.
-- Bytt ut `exports.handler` med `module.exports.<navn-på-lambda>`. Du velger selv hva lambdafunksjonen din skal hete
+- Bytt ut `exports.handler` med `exports.<navn-på-lambda>`. Du velger selv hva lambdafunksjonen din skal hete
 - La foreløpig tabellnavnet stå som det er. Vi skal endre dette i neste steg.
 - Finn konfigurasjonsdelen for funksjoner i `serverless.yml` og erstatt `hello` med navnet på lambdafunksjonen din (både på linjen under `functions` og etter `handler`).
 
@@ -11,12 +11,12 @@ Vi skal, som i del 1, starte med lambdafunksjonen vår. Men i motsetning til i d
 ---
 
 ## Deploy funksjonen
-Da er vi klare for å deploye funksjonen vår til AWS. Kjør `sls deploy`, vent til den er ferdig og sjekk i AWS consollet at lambdafunksjonen din har blitt opprettet korrekt.
+Da er vi klare for å deploye funksjonen vår til AWS. Kjør `sls deploy`, vent til den er ferdig og sjekk i webkonsollet at lambdafunksjonen din har blitt opprettet.
 
 >**Hva skjedde egentlig nå?**
 >Det er en del som skjer under panseret når man kjører `sls deploy`. Kort oppsummert gjør Serverless Framework følgende:
 >
->Serverless Framework pakker `serverless.yml` samt koden til lambdafunksjonen i en zip-fil og laster dette opp til en S3-bucket i AWS. Basert på `serverless.yml` vil rammeverket opprettet en såkalt CloudFormation template som beskriver alle ressursene vi ønsker å opprette. Deretter vil CloudFormation kjøre og lambdafunksjonen (og ev. andre ressurser vi har definert) vil bli opprettet.
+>Serverless Framework pakker `serverless.yml` samt koden til lambdafunksjonen i en zip-fil og laster dette opp til en S3-bucket i AWS. Basert på `serverless.yml` vil rammeverket opprette en såkalt CloudFormation template som beskriver alle ressursene vi ønsker å opprette. Deretter vil CloudFormation kjøre og lambdafunksjonen (og ev. andre ressurser vi har definert) vil bli opprettet.
 
 ## Test funksjonen
 Som nevnt tidligere kommer Serverless Framework med verktøy for å teste lambdafunksjonen uten å måtte bruke AWS consollet. Vi skal utforske disse verktøyene mer i detalj senere, men vi skal kjøre en kommando allerede nå.
