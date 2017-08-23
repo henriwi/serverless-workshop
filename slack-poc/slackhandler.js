@@ -12,26 +12,16 @@ var POST_OPTIONS = {
 
 
 module.exports.demo_slack = (event, context, callback) => {
-  console.log("Slackloggeren mottok event: ", JSON.stringify(event));
+    console.log("Slackloggeren mottok event: ", JSON.stringify(event));
 
-  /*console.log(event.Records[0]);
-  console.log(event.Records[0].dynamodb);
-  console.log(event.Records[0].dynamodb.NewImage);
-  console.log(event.Records[0].dynamodb.NewImage.text);
-  console.log(event.Records[0].dynamodb.NewImage.text.S);*/
-
-  //var record = event.Records[0]["dynamodb"]["Keys"];
-  var record = event.Records[0].dynamodb.Keys;
-  var eventName = event.Records[0].eventName;
-
-
-  console.log(record)
+    var record = event.Records[0].dynamodb.Keys;
+    var eventName = event.Records[0].eventName;
 
     var message = {
         channel: 'testing',
         text: "text: " + record.text.S + ". Eventname: " + eventName
     };
-    console.log('Melding som postes:', message);
+    console.log('Melding som postes til Slack: ', message);
     var r = https.request(POST_OPTIONS, function(res) {
                         res.setEncoding('utf8');
                         res.on('data', function (data) {
