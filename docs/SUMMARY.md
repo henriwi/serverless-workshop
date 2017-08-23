@@ -28,6 +28,6 @@
 ### Bonusoppgaver
 
 * [Introduksjon](del3/Introduksjon.md)
-* [Kinesis og Slack](del3/Slack.md)
+* [Kinesis og Slack](del3/Kinesis-Slack.md)
 * [Ytelse](del3/Ytelse.md)
 * [Autentisering](del3/Autentisering.md)
