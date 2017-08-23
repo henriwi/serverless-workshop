@@ -25,8 +25,9 @@
 * [Cloudfront](del2/Cloudfront.md)
 
 
-### Avanserte oppgaver
+### Bonusoppgaver
 
 * [Introduksjon](del3/Introduksjon.md)
-* [Ytelsestest](del3/Ytelsestest.md)
-* [Slack-integrasjon](del3/Slack-integrasjon.md)
+* [Kinesis og Slack](del3/Slack.md)
+* [Ytelse](del3/Ytelse.md)
+* [Autentisering](del3/Autentisering.md)
