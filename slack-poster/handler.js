@@ -4,12 +4,11 @@ const doc = require('dynamodb-doc');
 
 const dynamo = new doc.DynamoDB();
 
-const TABLE = "todos"
+const TABLE = "demo-sls"
 
-exports.handler = (event, context, callback) => {
+module.exports.demo_sls = (event, context, callback) => {
     console.log("Mottok lambda-event: ", JSON.stringify(event));
-
-    const done = (err, res) => {
+const done = (err, res) => {
         if (err) {
             console.log("Feil ved " + event.httpMethod + ": " + err);
         } else {
@@ -42,3 +41,4 @@ exports.handler = (event, context, callback) => {
             done(new Error(`Ulovlig HTTP-metode. Kun GET, POST og DELETE er tillatt. Du sendte inn følgende event:` + JSON.stringify(event)));
     }
 };
+

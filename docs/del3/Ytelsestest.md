@@ -1,1 +1,0 @@
-Oppgave om ytelse

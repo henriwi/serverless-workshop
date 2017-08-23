@@ -1,0 +1,74 @@
+service: demo-sls
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+#  stage: dev
+  region: eu-central-1
+
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        # For å gi lambdaen tilgang til DynamoDB må den ha følgende tilganger
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+        # For å gi Lambdaen tilgang til Streamen må følgende tilganger legges til
+        - dynamodb:GetRecords
+        - dynamodb:GetShardIterator
+        - dynamodb:DescribeStream
+        - dynamodb:ListStreams
+      Resource: "arn:aws:dynamodb:eu-central-1:*:*"
+
+functions:
+  # Function-definisjon for Lambdaen vår
+  demo-sls:
+    handler: handler.demo_sls
+    events:
+      - http: ANY todos
+
+  # Function-definisjon for Lambdaen som leser fra Kinesis-stream fra DynamoDB og poster til Slack
+  demo-slack:
+    handler: slackhandler.demo_slack
+    events:
+      - stream:
+          type: dynamodb
+          # Her henter vi ARN-en til streamen som er satt opp på ressursen "Tabell" (se lenger ned i configen)
+          arn:
+            Fn::GetAtt:
+              - Tabell
+              - StreamArn
+          batchSize: 1
+          startingPosition: LATEST
+
+
+resources:
+  Resources:
+    # Definisjon av DynamoDB-tabellen
+    # Navnet "Tabell" er egendefinert, og kan brukes til å referere til ressurser andre
+    # steder i configen
+    Tabell:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: demo-sls
+        AttributeDefinitions:
+          - AttributeName: key
+            AttributeType: S
+          - AttributeName: text
+            AttributeType: S
+        KeySchema:
+          - AttributeName: key
+            KeyType: HASH
+          - AttributeName: text
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        # Disse to linjene setter opp en Kinesis-stream på tabellen
+        StreamSpecification:
+          StreamViewType: NEW_IMAGE
