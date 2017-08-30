@@ -6,7 +6,7 @@ const dynamo = new doc.DynamoDB();
 
 const TABLE = "demo-sls"
 
-module.exports.demo_sls = (event, context, callback) => {
+module.exports.todos = (event, context, callback) => {
     console.log("Mottok lambda-event: ", JSON.stringify(event));
 const done = (err, res) => {
         if (err) {

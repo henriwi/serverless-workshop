@@ -27,21 +27,21 @@ provider:
 
 functions:
   # Function-definisjon for Lambdaen vår
-  demo-sls:
-    handler: handler.demo_sls
+  todos:
+    handler: handler.todos
     events:
       - http: ANY todos
 
   # Function-definisjon for Lambdaen som leser fra Kinesis-stream fra DynamoDB og poster til Slack
-  demo-slack:
-    handler: slackhandler.demo_slack
+  slackposter:
+    handler: slackhandler.poster
     events:
       - stream:
           type: dynamodb
           # Her henter vi ARN-en til streamen som er satt opp på ressursen "Tabell" (se lenger ned i configen)
           arn:
             Fn::GetAtt:
-              - Tabell
+              - TodosTabell
               - StreamArn
           batchSize: 1
           startingPosition: LATEST
@@ -52,7 +52,7 @@ resources:
     # Definisjon av DynamoDB-tabellen
     # Navnet "Tabell" er egendefinert, og kan brukes til å referere til ressurser andre
     # steder i configen
-    Tabell:
+    TodosTabell:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: demo-sls
