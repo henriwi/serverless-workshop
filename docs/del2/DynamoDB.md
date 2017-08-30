@@ -28,7 +28,7 @@ Kjør `sls deploy function -f <navn-på-funksjon>` for å deploye funksjonen til
 
 Nå som lambdafunksjonen er endret til å gå mot dynamodb-tabellen kan vi teste lambdafunksjonen på nytt og verifisere at vi får lagret data. Når man eksekverer en lambdafunksjon med Serverless Framework kan vi også sende med data som simulerer et event fra API Gateway.
 
-Kjør `sls invoke -f <din-funksjon> -d '{"body": "{\"key\":\"key2\",\"text\":\"test\"}","httpMethod": "POST"}'`. Forventet output er:
+Kjør `sls invoke -f <din-funksjon> -d '{"body": "{\"key\":\"key\",\"text\":\"Delta på JavaZone\"}","httpMethod": "POST"}'`. Forventet output er:
 
 ```
 {
