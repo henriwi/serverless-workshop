@@ -13,8 +13,10 @@ Vi starter med å lage en origin for API-et vi har deployet med Servlerless Fram
 
 ## Behavior for backend
 
-Naviger deg til den eksisterende behaviouren som i dag sørger for at trafikk til `/todos` routes til API-et vi laget i del 1. Endre behaviouren slik at trafikk på `/todos` blir routet til den nye *origin* vi nettopp har laget, og dermed til vårt nye API.
+Naviger deg til den eksisterende behavioren som i dag sørger for at trafikk til `/todos` rutes til API-et vi laget i del 1. Endre behavioren slik at trafikk på `/todos` blir rutet til den nye *origin* vi nettopp har laget, og dermed til vårt nye API.
 
 Det tar litt tid for AWS å provisjonere opp endringene i Cloudfront-distribusjonen. Ta deg en ☕ til mens du venter.
 
-Når du nå tester frontenden skal CloudFront route forespørslene til den nye API-gatewayen, og hente data fra en ny DynamoDB-tabell. Test at dette virker ved at du fortsatt får lagt inn og slettet elementer.
+Når du nå tester frontenden skal CloudFront rute forespørslene til den nye API-gatewayen, og hente data fra DynamoDB-tabellen du har konfigurert i `serverless.yml`. Test at dette virker ved at du fortsatt får lagt inn og slettet elementer.
+
+Da er du ferdig med del 2! Bra jobba 🙌 Vi tar en ny gjennomgang i plenum når alle er ferdige, men sniktitt gjerne på bonusoppgavene om du er utålmodig.
