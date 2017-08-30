@@ -10,9 +10,9 @@ Test ut følgende kommandoer (og gjerne flere) mot tjenesten du nettopp har depl
 - `sls metrics -f <navn-på-lambda>` gir metrikker om en spesifikk lambda
 
 ### Test APIet
-Før vi setter opp frontenden til å peke mot det nye APIet vårt, kan vi også teste at APIet fungerer ved hjelp av `curl`.
+Før vi setter opp frontenden til å peke mot det nye API-et vårt, kan vi også teste at API-et fungerer ved hjelp av `curl`.
 
-Test ut følgende kommandoer for å legge inn og hente ut _todos_. Test gjerne kommandoene vi kjørte ovenfor og hent ut logger og metrikker for lambdafunksjonene etter du har kalt APIet.
+Test ut følgende kommandoer for å legge inn og hente ut todos. Test gjerne kommandoene vi kjørte ovenfor og hent ut logger og metrikker for lambdafunksjonene etter du har kalt API-et.
 
 - `curl -X GET <url-til-api>` vil hente ut alle todoene fra DynamoDB-tabellen
 - `curl -X POST -H "Content-Type: application/json" -d '{"key":"key1","text":"test"}' <url-til-api>` vil legge inn en ny todo. Merk at `key` må være unik.
