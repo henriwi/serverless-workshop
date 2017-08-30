@@ -60,4 +60,4 @@ Det tar rundt 10 minutter for AWS å provisjonere opp Cloudfront-distribusjonen 
 
 Det var det! Hvis du nå går tilbake til dashboardet for Cloudfront og åpner URLen som ligger i `Domain Name`-kolonnen skal Todo-appen fungere 🚀
 
-
+Da er vi ferdige med del 1. Vi tar en oppsummering i plenum når alle er ferdige. I mellomtiden kan du gjerne sniktitte på del 2.
