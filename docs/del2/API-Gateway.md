@@ -8,7 +8,7 @@ Som i del 1 skal vi sette opp en API Gateway og konfigurere den slik at innkomme
 - For at API-gatewayen skal fungere med frontenden vår og CloudFront er det viktig at pathen til ressursen i APIet er `/todos` , på samme måte som i del 1.
 
 ## Deploy API Gateway
-Kjør `sls deploy` igjen, og kopier URLen som blir printet i terminalen under `endpoints`. Får du følgende output når du tester URL-en?
+Kjør `sls deploy` igjen, og kopier URLen som blir printet i terminalen under `endpoints`. Får du en variant av følgende output når du tester URL-en?
 
 ```
 {
