@@ -10,7 +10,7 @@ Vi skal bruke en rekke ulike tjenester hos AWS:
 - S3
 - Cloudfront
 
-Vi skal sette opp tjenesten én etter én, i rekkefølgen de er listet opp over.
+Vi skal sette opp tjenestene én etter én, i rekkefølgen de er listet opp over.
 
 Start med å logge deg inn i webkonsollet til AWS. Innloggingslenke, brukernavn og passord får du utdelt på workshopen.
 

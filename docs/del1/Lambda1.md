@@ -1,12 +1,12 @@
 # Lambda
 
-Lambda er Function-as-a-service-løsningen til AWS. I vår applikasjon ligger backendlogikken, med håndtering av innkommende requests og kommunikasjon med databasen, i en lambdafunksjon.
+Lambda er Function-as-a-service-løsningen til AWS. I vår applikasjon ligger backendlogikken, med håndtering av innkommende HTTP-requests og kommunikasjon med databasen, i en lambdafunksjon.
 
 Vi starter med å sette opp en enkel "Hello World"-lambda.
 
-Finn frem til Lambda i AWS-konsollet og klikk _"Get started now"_ eller _"Create new lambda"_.
+Finn frem til Lambda i AWS-konsollet og klikk _"Get started now"_ eller _"Create a function"_.
 
-- Start med templaten _Blank Function_
+- I stedet for å velge et blueprint trykker du _"Author from scratch"_
 - Ikke sett opp noen triggere, dette gjør vi senere
 - Gi Lambdaen din et valgfritt navn
 - Velg runtime _Node.js 6.10_ (default)

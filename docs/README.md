@@ -6,7 +6,7 @@ Workshopen er delt i 3:
 
 - [Manuelt oppsett av applikasjon i webkonsollet til AWS](del1/Introduksjon.md)
 - [Automatisert oppsett ved bruk av Serverless Framework](del2/Introduksjon.md)
-- [Avanserte oppgaver](del3/Introduksjon.md)
+- [Bonusoppgaver](del3/Introduksjon.md)
 
 En demo av applikasjonen vi setter opp i workshopen finner du [her](https://d2rt9y4sv1dg49.cloudfront.net).
 

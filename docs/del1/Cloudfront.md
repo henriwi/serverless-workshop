@@ -28,6 +28,7 @@ Gå inn i Cloudfront-konsollet og opprett en ny distribusjon
 - Velg _Restrict bucket access_ og _Create a New Identity_. Velg _Yes, Update Bucket Policy_
 - Velg _Redirect HTTP to HTTPS_
 - Sett _Default Root Object_ til `index.html`
+- Skriv navnet ditt i _Comment_-feltet, så blir det lettere å finne igjen distribusjonen i menyen etterpå
 - La resten stå som default og klikk _Create Distribution_
 
 Du har nå laget en Cloudfront-distribution med en origin for S3-bucketen. Det ble opprettet en default _behavior_ som vil returnere `index.html` fra S3-bucketen din når man går på rot på URL-en til distribusjonen.
@@ -38,7 +39,7 @@ Neste steg er å lage en origin for API-et.
 
 - Gå inn i administrasjonspanelet for distribusjonen du opprettet i forrige steg
 - Under _Origins_, velg _Create Origin_
-- Lim inn URL-en til API-et ditt i _Origin Domain Name_. Den vil automatisk splittes slik at API-ets deployment stage (f.eks. `/prod`) legges inn i _Origin Path_. Merk at du ikke skal ha med `/todos`-delen på URL-en du limer inn her.
+- Lim inn URL-en til API-et ditt i _Origin Domain Name_. Den vil automatisk splittes slik at API-ets deployment stage (f.eks. `/prod`) legges inn i _Origin Path_. Merk at du ikke skal ha med `/todos`-delen på URL-en du limer inn her
 - Velg _HTTPS Only_ og klikk _Create_
 
 ## Behavior for backend

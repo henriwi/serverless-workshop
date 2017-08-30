@@ -1,12 +1,12 @@
 # API Gateway
 
-API Gateway er Amazons tjeneste for å sette opp REST-APIer. API Gateway opererer med kjente REST-begreper som ressurser, actions, m.m.
+API Gateway er Amazons tjeneste for å sette opp REST-API-er. API Gateway opererer med kjente REST-begreper som ressurser, actions, m.m.
 
 For å lage API-et til applikasjonen vår må vi gjøre tre ting:
 
 - Opprette en REST-_ressurs_
 - Opprette en _action_ som håndterer innkommende requests på ressursen, og knytte denne mot Lambdaen vår
-- _Deploye_ APIet
+- _Deploye_ API-et
 
 
 ### API med ressurs
@@ -16,7 +16,7 @@ Start med å åpne API Gateway i AWS-konsollet
 
 Vi har nå laget en REST-ressurs. For å definere hvordan ressursen håndterer innkommende HTTP-requester må vi lage en action.
 
-### Action for å håndtere innkommende requests
+### Konfigurere action
 - Marker den nyopprettede ressursen og opprett en ny metode på denne med _Actions_ -> _Create method_
 - Velg `ANY` i dropdownen for å lage en handler for alle HTTP-metoder
 - Velg Integration type _Lambda Function_
@@ -38,5 +38,5 @@ Får du følgende output når du tester URL-en?
 Hello World via API Gateway!
 ```
 
-Bra! Da er API-et korrekt konfigurert og deployet. Imidlertid gjør ikke backenden vår så mye fornuftig enda, så vi går tilbake til Lambda-konsollet for å legge til litt skikkelig Forretningslogikk™.
+Bra! Da er API-et korrekt konfigurert og deployet. Imidlertid gjør ikke backenden vår så mye fornuftig ennå, så vi går tilbake til Lambda-konsollet for å legge til litt skikkelig Forretningslogikk™.
 
