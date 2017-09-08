@@ -4,4 +4,4 @@ Ferdig allerede? Veldig bra jobba 👏👏👏 Vi har laget et knippe bonusoppga
 
 - [Integrasjon med Kinesis-stream og posting til Slack](Kinesis-Slack.md)
 - [Analyse av ytelse og metrikker](Ytelse.md)
-- [Autentisering med Cognito](Autentisering.md)
+- [Autentisering på APIet](Autentisering.md)
