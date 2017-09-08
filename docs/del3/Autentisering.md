@@ -4,7 +4,7 @@ API Gateway kommer med støtte for å definere en såkalt _Custom Authorizer_, e
 
 I denne oppgaven skal vi lage en slik lambdafunksjon og konfigurere vår API Gateway til å bruke denne funksjonen til å validere alle requester mot APIet.
 
-> Du kan lese mer om hvordan en slik _custom authorizer_ fungerer [her](http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html)
+> Du kan lese mer om hvordan en slik _custom authorizer_ fungerer [her](http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html).
 
 ## Oppsett
 
@@ -24,7 +24,7 @@ Lambdafunksjonen din vil motta et event på følgende format:
 }
 ```
 
-Basert på dette eventet skal du skrive en funksjon som returnerer en såkalt IAM Policy som sier om brukeren får lov til å aksessere APIet vårt. For dette eksempelet foreslår vi at du gir brukeren tilgang hvis tokenet er over 5 tegn, og ikke tilgang ellers. I et reelt scenario kan man f.eks. validere tokenet mot en OAuth-provider eller validere tokenet som et JSON Web Token.
+Basert på dette eventet skal du skrive en funksjon som returnerer en såkalt IAM Policy som sier om brukeren får lov til å aksessere APIet vårt. For denne oppgaven foreslår vi at du f.eks. gir brukeren tilgang hvis tokenet er over 5 tegn, og ikke tilgang ellers. I et reelt scenario kan man f.eks. validere tokenet mot en OAuth-provider eller validere tokenet som et JSON Web Token.
 
 Policien som returneres må inneholde følgende:
 
@@ -33,7 +33,7 @@ Policien som returneres må inneholde følgende:
 - `"Action": "execute-api:Invoke"` sier at brukeren skal ha tilgang til å kalle APIet
 - `"Effect": "Allow"` betyr at brukeren får tilgang
 - `"Effect": "Deny"` betyr at brukeren ikke får tilgang
-- `"Resource": "arn:aws:execute-api:eu-west-1:436890957976:4sipqbz4ug/dev/GET/todos"` er ressursen brukeren skal ha tilgang til
+- `Resource` inneholder en arn til API Gatewayen (en unik id som identifiserer din API Gateway)
 
 Formatet på policien må være slik:
 
@@ -57,10 +57,23 @@ For å hjelpe deg i gang kan du ta utgangspunkt i koden under for lambdafunksjon
 
 {% codesnippet "./lambda/authorizer.js" %} {% endcodesnippet %}
 
-For å teste funksjonen din anbefaler vi at du kopierer eventet over og lagrer dette i en fil `event.json`. Da kan du bruke kommandoen `sls invoke local -f <navn-på-function> -p event.json` for å teste funksjonen din lokalt. Når funksjonen din er ferdig klar, kjør `sls deploy` for å deploye alle endringer. Finn API Gateway i AWS Consollet, velg _Authorizers_ og verifiser at APIet har din nye lambdafunksjon som _authorizer_.
+### Testing av funksjonen
+
+For å teste funksjonen din anbefaler vi at du kopierer eventet nedenfor og lagrer dette i en fil `event.json`. Da kan du bruke kommandoen `sls invoke local -f <navn-på-function> -p event.json` for å teste funksjonen din lokalt. Når funksjonen din er ferdig, kjør `sls deploy` for å deploye alle endringer. Finn API Gateway i AWS Consollet, velg _Authorizers_ og verifiser at APIet har din nye lambdafunksjon som _authorizer_.
+
+```
+{
+    "type": "TOKEN",
+    "methodArn": "arn:aws:execute-api:eu-west-1:436890957976:4sipqbz4ug/dev/GET/todos",
+    "authorizationToken": "mysecrettoken"
+}
+```
+
+> Husk at du kan deploye kun funksjonen din med kommandoen `sls deploy function -f <navn-på-function>`. Dette vil gå en del raskere enn å kjøre `sls deploy` som deployer hele servicen din.
 
 ### Test APIet
 
-For å teste APIet kan vi bruke curl. Når API Gateway er satt opp med en egen _authorizer_ forventer den at tokenet ligger i headeren `Authorization`. Test APIet med kommandoen nedenfor, og sjekk at du både får tilgang til APIet (og returnert todo-listen), og at du ikke får tilgang til tokenet hvis du har et for kort token, eller ikke sender med et token.
+For å teste APIet kan vi bruke curl. Når API Gateway er satt opp med en egen _authorizer_ forventer den at tokenet ligger i headeren `Authorization`. Test APIet med kommandoene nedenfor, og sjekk at du både får tilgang til APIet når du sender med et token, og at du ikke får tilgang til APIet hvis du har et for kort token, eller ikke sender med et token.
 
-`curl -H "Authorization: mysecrettoken"  <url-til-apiet>`
+- `curl -H "Authorization: mysecrettoken" -X GET <url-til-apiet>` vil hente ut alle todoene fra DynamoDB-tabellen 
+- `curl -X POST -H "Content-Type: application/json" -H "Authorization: mysecrettoken" -d '{"key":"key1","text":"test"}' <url-til-api>` vil legge inn en ny todo. Merk at `key` må være unik.
