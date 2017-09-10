@@ -37,6 +37,10 @@ Vegeta har to moduser: attack og report. Angrip (`attack`) gjør kall til
 url(ene) man oppgir og `report` generer rapporter basert på informasjonen fra
 attack-kommandoen.
 
+>Hvis du få feilmeldingen`socket: too many open files` kan du øke grensen for 
+åpne filer med denne kommandoen: `ulimit -n 7168`
+
+
 Se Vegetas readme for detaljer utover det som forklares i denne guiden:
 https://github.com/tsenart/vegeta#-reporter
 
@@ -60,11 +64,23 @@ echo "GET https://5xv110usmk.execute-api.eu-central-1.amazonaws.com/dev/todos" |
 
 #### Report-kommandoen
 
-Report-kommandoen til Vegeta genererer rapporter basert på output fra attack-kommandoen.
-Basert på denne binærdataen kan rapport-kommandoen generere
+Report-kommandoen til Vegeta genererer rapporter basert på output fra attack-
+kommandoen. Basert på denne binærdataen kan rapport-kommandoen generere
 forkjellige rapporter. Rapportene som kommer innebyggd er: text, json, histogram
 og plot. Vi kommer nok kun til å trenge tekst-versjonen som er standard om man
 ikke oppgir noe annet.
+
+Eksempel på output fra en `text` rapport:
+```
+Requests      [total, rate]            348, 40.12
+Duration      [total, attack, wait]    8.758333528s, 8.674999574s, 83.333954ms
+Latencies     [mean, 50, 95, 99, max]  341.097576ms, 99.622132ms, 1.496621772s, 1.761080975s, 2.041584333s
+Bytes In      [total, mean]            73428, 211.00
+Bytes Out     [total, mean]            0, 0.00
+Success       [ratio]                  100.00%
+Status Codes  [code:count]             200:348
+Error Set:
+```
 
 Se Vegetas readme for mer informasjon om reporterne: https://github.com/tsenart/vegeta#-reporter.
 
@@ -85,15 +101,15 @@ Se Vegetas readme for mer informasjon om reporterne: https://github.com/tsenart/
   hendelsene. Når ytelsestesten har kjørt noen minutter vil man kunne begynne å
   se utslag på grafene. Prøv med forskjellige antall spørringer i sekundet og se
   hvordan det påvirker ytelsen til databasen.
-- Alt etter hvordan du konfigurerte DynamoDB-tabellen i de tidligere oppgavene
-  vil du nå et punkt hvor spørringer blir blokkert. Disse vil du se i grafene
-  «Throttled read requests» og «Throttled write requests».
+- Med read og write capacity satt til 1 som konfigurer i tidligere oppgaver vil
+  man ganske raskt nå punktet hvor spørringer blir blokkert. Disse vil du se i
+  grafene «Throttled read requests» og «Throttled write requests».
 
 >Hvis man har satt «Provisioned read capacity units» til 1 vil man kunne gjøre
 én lesing i sekundet (pluss en viss mengde over i kortere perioder). Hvis man
-utfører en test med 5 spørringer i sekundet vil man da være over grensen og om
-man kjører testen over en litt forlenget periode vil man se at
-spørringer over den konfigurerte grensen blir blokkert.
+utfører en test med 40 spørringer i sekundet vil man da være over grensen og om
+man kjører testen over en litt forlenget periode vil man se at spørringer over
+den konfigurerte grensen blir blokkert.
 
 
 ## Oppsett av auto-scaling for Dynamodb
@@ -104,37 +120,44 @@ Det er mulig å sette opp auto-skalering av DynamoDB-tabellene med noen få steg
 - Under seksjonen _Auto Scaling_ finner du muligheten for å konfigurere auto-
   skalering
 - Huk av sjekkboksene for _Read capacity_ og _Write capacity_
-- Under _IAM Role_ velger du _Existing role with pre-defined policies_ og fyller
-inn rollen TODO: [navn ferdigoppsatt rolle her].
+- Under _IAM Role_ velger du _New role: DynamoDBAutoscaleRole_
+- Aktiver konfigurasjonen med trykke _Save_-knappen
 
 Du kan nå kjøre ytelsestesten på 40 spørringer i sekundet igjen og følge med i
 Metrics-fanen for DynamoDB-tabellen. Du skal nå kunne se at den røde linjen for
 _Read capacity_-grafen justerer seg etter trykket av ytelsestesten.
-
+  
 Du har nå en applikasjon som skalerer helt automatisk!
 
 
 ## Oppsett av monitorering og konfigurering av struping for API gateway
 
-API Gateway har som standard en begrensning på 1000 spørringer i sekundet og
+API Gateway har som standard en begrensning på 10000 spørringer i sekundet og
 utbruddsgrense (burst) på 5000 spørringer i sekundet i kortere perioder.
 
-Disse grensene har du kanskje ikke nådd i testingen din, men i en
-produksjonssetting kan det være være praktisk å begrense spørringer på API-nivå.
+Disse grensene har du nok ikke nådd i testingen din, men i en produksjonssetting
+kan det være være praktisk å begrense spørringer på API-nivå. For eksempel om
+man har en del av applikasjone som enda ikke skalerer etter behov. 
+
 Det er mulig å konfigurere disse grensene både høyere og lavere, alt etter
 behov.
 
 Konfigurasjon av dette gjøres under _Stages_-menyen API-et ditt:
 
 - Gå til _Stages_ til API-et for applikasjonen
-- Under Settings-fanen finner du en seksjon som heter _Default Method Throttling_
+- Under _Settings_-fanen finner du en seksjon som heter _Default Method Throttling_
 - Her kan man skru av struping (throttlig) eller endre verdiene for strupingen
+- Sett _Rate_ til 50 request per second og _Burst_ til 10 request per second
+- Start en ytelsestest med 100 spørringer i sekundet (`-rate 100`) i en kort
+  periode og se hvordan endringen påvirker testen
 
 
 ### Skalering av Lambda funksjoner
 
 Det er mulig å se grafer over ytelsen til en Lambdafunksjon under
 _Monitoring_-fanen inne på siden for funksjonen.
+Interessante grafer her kan blant annet være `Invocation duration` og
+`Invocation errors`.
 
 Som standard er det en begrensning på 1000 samtidige eksekveringer på tvers av
 alle funksjonene i en region, med utbruddsgrense på 3000 og 1000 avhengig av
