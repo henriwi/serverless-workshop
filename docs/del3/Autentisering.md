@@ -77,3 +77,5 @@ For å teste APIet kan vi bruke curl. Når API Gateway er satt opp med en egen _
 
 - `curl -H "Authorization: mysecrettoken" -X GET <url-til-apiet>` vil hente ut alle todoene fra DynamoDB-tabellen 
 - `curl -X POST -H "Content-Type: application/json" -H "Authorization: mysecrettoken" -d '{"key":"key1","text":"test"}' <url-til-api>` vil legge inn en ny todo. Merk at `key` må være unik.
+
+Frontenden til appen vår er satt opp med å sende en `Authorization`-header med verdien `mysecrettoken`. Det betyr at frontenden vår fortsatt bør fungere, også etter at vi har lagt på sikkerhet på APIet! Test at vi fortsatt kan hente ut todos fra appen vår.
