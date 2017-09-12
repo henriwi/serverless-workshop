@@ -1,0 +1,5 @@
+{
+    "type": "TOKEN",
+    "methodArn": "arn:aws:execute-api:eu-west-1:436890957976:4sipqbz4ug/dev/GET/todos",
+    "authorizationToken": "mysecrettoken"
+}
