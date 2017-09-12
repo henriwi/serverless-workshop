@@ -16,7 +16,6 @@ var _uuid2 = _interopRequireDefault(_uuid);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var URL = '/todos';
-var TOKEN = 'mysecrettoken';
 
 function saveTodos(todos) {
   return {
@@ -28,11 +27,7 @@ function saveTodos(todos) {
 function fetchTodos() {
   return function (dispatch) {
     dispatch({ type: 'FETCHING' });
-    fetch(URL, {
-      headers: {
-        'Authorization': TOKEN
-      }
-    }).then(function (response) {
+    fetch(URL, {}).then(function (response) {
       return response.json().then(function (json) {
         return dispatch(saveTodos(json.Items));
       });
@@ -45,7 +40,7 @@ function postTodo() {
     var text = getState().form.text;
     fetch(URL, {
       headers: {
-        'Authorization': TOKEN
+        'Authorization': _uuid2.default.v4()
       },
       method: 'post',
       body: JSON.stringify({
@@ -62,7 +57,7 @@ function deleteTodo(todo) {
   return function (dispatch) {
     fetch(URL, {
       headers: {
-        'Authorization': TOKEN
+        'Authorization': _uuid2.default.v4()
       },
       method: 'delete',
       body: JSON.stringify(todo)

@@ -1,7 +1,6 @@
 import uuid from 'uuid';
 
 const URL = '/todos';
-const TOKEN = 'mysecrettoken';
 
 function saveTodos(todos) {
   return {
@@ -13,11 +12,7 @@ function saveTodos(todos) {
 export function fetchTodos() {
   return dispatch => {
     dispatch({ type: 'FETCHING' })
-    fetch(URL, {
-      headers: {
-        'Authorization': TOKEN
-      }
-    })
+    fetch(URL, {})
     .then(response => {
       return response.json().then(json => dispatch(saveTodos(json.Items)))
     })
@@ -29,7 +24,7 @@ export function postTodo() {
     const text = getState().form.text;
     fetch(URL, {
       headers: {
-        'Authorization': TOKEN
+        'Authorization': uuid.v4()
       },
       method: 'post',
       body: JSON.stringify({
@@ -47,7 +42,7 @@ export function deleteTodo(todo) {
   return dispatch => {
     fetch(URL, {
       headers: {
-        'Authorization': TOKEN
+        'Authorization': uuid.v4()
       },
       method: 'delete',
       body: JSON.stringify(todo)
