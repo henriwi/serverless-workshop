@@ -24,7 +24,14 @@ functions:
     events:
       - http: 
           path: todos
-          method: ANY
+          method: GET
+      - http:
+          path: todos
+          method: POST
+          authorizer: authorizerFunc
+      - http:
+          path: todos
+          method: DELETE
           authorizer: authorizerFunc
   authorizerFunc:
     handler: authorizer.authorizerFunc
