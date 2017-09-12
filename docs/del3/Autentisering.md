@@ -1,10 +1,10 @@
 # Autentisering
 
-I denne oppgaven skal vi utvide applikasjonen vår med å legge på en enkel autentisering på APIet, slik at ikke hvem som helst kan hente ut og legge til todoer. Vi bygger videre på Serverless Framework-configen i `serverless.yml`.
+I denne oppgaven skal vi utvide applikasjonen vår med å legge på en enkel autentisering på APIet, slik at ikke hvem som helst kan legge til eller slette todoer. Det å hente ut todoer skal fortsatt være åpent. Vi bygger videre på Serverless Framework-configen i `serverless.yml`.
 
 API Gateway kommer med støtte for å definere en såkalt _Custom Authorizer_, en egen lambdafunksjon som er ansvarlig for å kontrollere tilgangen til APIet. Når det kommer en request til APIet vil API Gateway først sjekke om det eksisterer en egen _authorizer_ for APIet. Hvis det er tilfelle vil API Gateway kalle lambdafunksjonen med et token som input som er hentet ut fra en spesifikk header i requesten. Lambdafunksjonen vil ta dette tokenet, validere det, og returnere en såkalt IAM policy, et JSON-objekt som sier om brukeren har tilgang til å kalle APIet eller ikke.
 
-I denne oppgaven skal vi lage en slik lambdafunksjon og konfigurere vår API Gateway til å bruke denne funksjonen til å validere alle requester mot APIet.
+I denne oppgaven skal vi lage en slik lambdafunksjon og konfigurere vår API Gateway til å bruke denne funksjonen til å validere alle `POST` og `DELETE`-requester mot APIet.
 
 > Du kan lese mer om hvordan en slik _custom authorizer_ fungerer [her](http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html).
 
@@ -12,7 +12,9 @@ I denne oppgaven skal vi lage en slik lambdafunksjon og konfigurere vår API Gat
 
 ### Authorizer på APIet
 
-Start med å utvide _events_-delen av todo-funksjonen vår til å inneholde en _authorizer_. I tillegg trenger du å definere en ny _function_. Se under [HTTP Endpoints with Custom Authorizers](https://serverless.com/framework/docs/providers/aws/events/apigateway#http-endpoints-with-custom-authorizers) for detaljer om hvordan dette gjøres.
+Start med å utvide _events_-delen av todo-funksjonen vår til å inneholde en _authorizer_ for `POST` og `DELETE`-metoder. `GET` skal ikke ha en _authorizer_. I tillegg trenger du å definere en ny _function_. Se under [HTTP Endpoints with Custom Authorizers](https://serverless.com/framework/docs/providers/aws/events/apigateway#http-endpoints-with-custom-authorizers) for detaljer om hvordan dette gjøres.
+
+> Hint: Du kan definere flere http-events for samme funksjon, og for hvert event definere en _authorizer_ eller ikke.
 
 ### Implementer lambdafunksjonen
 
@@ -77,7 +79,8 @@ For å teste funksjonen din anbefaler vi at du kopierer eventet nedenfor og lagr
 
 For å teste APIet kan vi bruke curl. Når API Gateway er satt opp med en egen _authorizer_ forventer den at tokenet ligger i headeren `Authorization`. Test APIet med kommandoene nedenfor, og sjekk at du både får tilgang til APIet når du sender med et token, og at du ikke får tilgang til APIet hvis du har et for kort token, eller ikke sender med et token.
 
-- `curl -H "Authorization: mysecrettoken" -X GET <url-til-apiet>` vil hente ut alle todoene fra DynamoDB-tabellen
+- `curl -X GET <url-til-apiet>` vil hente ut alle todoene fra DynamoDB-tabellen (skal ikke kreve `Authorization`-header)
 - `curl -X POST -H "Content-Type: application/json" -H "Authorization: mysecrettoken" -d '{"key":"key1","text":"test"}' <url-til-api>` vil legge inn en ny todo. Merk at `key` må være unik.
+- `curl -X DELETE -H "Authorization: mysecrettoken" -d '{"key":"key1","text":"test"}' <url-til-api>` vil slette en todo.
 
-Frontenden til appen vår er satt opp med å sende en `Authorization`-header med verdien `mysecrettoken`. Det betyr at frontenden vår fortsatt bør fungere, også etter at vi har lagt på sikkerhet på APIet! Test at vi fortsatt kan hente ut todos fra appen vår.
+Frontenden til appen vår er satt opp med å sende en `Authorization`-header med en generert uuid, og CloudFront er som standard satt opp med å videresende `Authorization`-headeren til API Gateway på `POST` og `DELETE`. Det betyr at du skal kunne legge til og slette todos fra appen vår, også med sikkerhet på APIet! Test derfor at vi fortsatt kan legge til, slette og hente ut todos fra appen vår.
