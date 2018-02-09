@@ -28,16 +28,15 @@ hoppe over denne seksjonen om installasjon og bruk av Vegeta.
 Vegeta kan installeres på Mac gjennom homebrew: `brew install vegeta`.
 
 For andre platformer kan man laste ned binærfiler:
-https://github.com/tsenart/vegeta/releases. Husk å velge riktig fil til din
-plattform.
+https://github.com/tsenart/vegeta/releases.
 
 ### Bruk
 
-Vegeta har to moduser: attack og report. Angrip (`attack`) gjør kall til
+Vegeta har to moduser: attack og report. `attack` gjør kall til
 url(ene) man oppgir og `report` generer rapporter basert på informasjonen fra
 attack-kommandoen.
 
->Hvis du få feilmeldingen`socket: too many open files` kan du øke grensen for 
+>Hvis du får feilmeldingen`socket: too many open files` kan du øke grensen for 
 åpne filer med denne kommandoen: `ulimit -n 7168`
 
 
@@ -50,7 +49,7 @@ Attack-kommandoen utfører selve ytelsestesten. Her angir man parametrene for
 testen ved å angi url(ene) å gå mot, antall spørringer i sekundet og hvor lenge
 testen skal kjøre.
 
-Outputen av attack kommadoen er binærtdata som man kan lagre til fil eller
+Outputen av attack kommadoen er binærdata som man kan lagre til fil eller
 gi direkte videre til Vegetas report-kommando.
 
 Den følgende kommandoen vil sende 5 `GET`-spørringer i sekundet i 10 minutter til
@@ -90,18 +89,18 @@ Se Vegetas readme for mer informasjon om reporterne: https://github.com/tsenart/
 
 - Sett i gang en ytelsestest med Vegeta på 40 spørringer i sekundet over 10
   minutter. Det kan ta noen minutter før man får utslag i grafene, så bare start
-  kommandoen og gå videre til punktenen under.
+  kommandoen og gå videre til punktene under.
 - Gå deretter til DynamoDB-tabellen for applikasjonen din i AWS-konsollet og gå
   til fanen _Metrics_. Her kan du se aktiviteten for tabellen i forskjellige
   grafer. Blant annet ser man antall lesninger og skrivinger i sekundet og
-  ventetid (latency) for lesing og skriving mm. Det er desverre ikke noen
-  automatisk oppdatering av grafene så du må selv trykke på oppdateringskappen
-  oppe til høyret i Metrics vinduet.
+  ventetid (latency) for lesing og skriving, m.m. Grafene oppdateres ikke 
+  automatisk, så du må selv trykke på oppdateringskappen
+  oppe til høyre i Metrics vinduet.
 - Sett _Time Range_ oppe til høyre på siden til _Last Hour_ for å se de nyeste
   hendelsene. Når ytelsestesten har kjørt noen minutter vil man kunne begynne å
   se utslag på grafene. Prøv med forskjellige antall spørringer i sekundet og se
   hvordan det påvirker ytelsen til databasen.
-- Med read og write capacity satt til 1 som konfigurer i tidligere oppgaver vil
+- Med read og write capacity satt til 1 som konfigurert i tidligere oppgaver vil
   man ganske raskt nå punktet hvor spørringer blir blokkert. Disse vil du se i
   grafene «Throttled read requests» og «Throttled write requests».
 
@@ -114,11 +113,10 @@ den konfigurerte grensen blir blokkert.
 
 ## Oppsett av auto-scaling for Dynamodb
 
-Det er mulig å sette opp auto-skalering av DynamoDB-tabellene med noen få steg:
+Det er mulig å sette opp autoskalering av DynamoDB-tabellene med noen få steg:
 
 - Gå til DynamoDB-tabellen for applikasjonen og velg fanen _Capacity_
-- Under seksjonen _Auto Scaling_ finner du muligheten for å konfigurere auto-
-  skalering
+- Under seksjonen _Auto Scaling_ finner du muligheten for å konfigurere autoskalering
 - Huk av sjekkboksene for _Read capacity_ og _Write capacity_
 - Under _IAM Role_ velger du _New role: DynamoDBAutoscaleRole_
 - Aktiver konfigurasjonen med trykke _Save_-knappen
@@ -132,12 +130,11 @@ Du har nå en applikasjon som skalerer helt automatisk!
 
 ## Oppsett av monitorering og konfigurering av struping for API gateway
 
-API Gateway har som standard en begrensning på 10000 spørringer i sekundet og
-utbruddsgrense (burst) på 5000 spørringer i sekundet i kortere perioder.
-
-Disse grensene har du nok ikke nådd i testingen din, men i en produksjonssetting
+API Gateway har som standard en begrensning på 10 000 spørringer i sekundet, med en burst-grense
+på 5000.
+Disse grensene har du neppe nådd i testingen din, men i en produksjonskontekst
 kan det være være praktisk å begrense spørringer på API-nivå. For eksempel om
-man har en del av applikasjone som enda ikke skalerer etter behov. 
+man har en del av applikasjonen som ikke skalerer automatisk. 
 
 Det er mulig å konfigurere disse grensene både høyere og lavere, alt etter
 behov.
