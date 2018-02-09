@@ -29,22 +29,14 @@ I `serverless.yml` må vi lage en ny _function_. Lambdafunksjonen som abonnerer 
 
 Dokumentasjonen om [events i Serverless Framework](https://serverless.com/framework/docs/providers/aws/events/streams/) inneholder et eksempel på hvordan man konfigurerer en function til å lytte på events fra en Kinesis-stream.
 
-Du kan ta utgangspunkt i koden under for Lambdafunksjonen din. Den logger innkommende events til `console.log`, slik at de dukker opp i [Cloudwatch](https://console.aws.amazon.com/cloudwatch). Der kan du se hvordan eventene er strukturert, slik at du får skrevet korrekt kode for å hente ut de relevante dataene.
+I branchen [`losningsforslag`](https://github.com/henriwi/serverless-workshop/tree/losningsforslag/slack-poster) finner du [`kinesis-test-event.json`](https://github.com/henriwi/serverless-workshop/blob/losningsforslag/slack-poster/kinesis-test-event.json), et gyldig Kinesis-event som du kan bruke til manuell testing av Slack-funksjonen din. Du kan invokere funksjonen manuelt, som i del 2, på følgende vis:
 
->Hint: `eventName` på hver record angir som man har lagt til eller fjernet en record
+```
+sls invoke -f din-slack-funksjon -p kinesis-test-event.json
+```
+
+For Lambdafunksjonen din kan du ta utgangspunkt i koden under. Den logger innkommende events til `console.log`, slik at de dukker opp i [Cloudwatch](https://console.aws.amazon.com/cloudwatch). Der kan du se hvordan eventene er strukturert, slik at du får skrevet korrekt kode for å hente ut de relevante dataene.
+
+>Hint: `eventName` på hver record angir om man har lagt til eller fjernet en record
 
 {% codesnippet "./lambda/slackposter.js" %} {% endcodesnippet %}
-
-
-### Teste manuelt
-
-Du vil nå ha to _functions_ i `serverless.yml`, la oss kalle dem `todos` og `slackposter`. Disse kan du teste manuelt på følgende vis:
-
-```
-sls invoke -f todos -p todo-test-event.json
-
-sls invoke -f slackposter -p kinesis-test-event.json
-
-```
-
-I branchen [`losningsforslag`](https://github.com/henriwi/serverless-workshop/tree/losningsforslag/slack-poster) finner du [`todo-test-event.json`](https://github.com/henriwi/serverless-workshop/blob/losningsforslag/slack-poster/todo-test-event.json) og [`kinesis-test-event.json`](https://github.com/henriwi/serverless-workshop/blob/losningsforslag/slack-poster/kinesis-test-event.json) som du kan bruke til testing.
