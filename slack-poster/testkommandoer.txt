@@ -1,3 +1,3 @@
-sls invoke -f demo-slack -p recordevent.json
+sls invoke -f slackposter -p kinesis-test-event.json
 
-sls invoke -f demo-sls -d '{"body": "{\"key\":\"key6\",\"text\":\"testen\"}","httpMethod": "POST"}'
+sls invoke -f todos -p todo-test-event.json
