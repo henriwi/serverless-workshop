@@ -2,7 +2,7 @@
 
 var POST_OPTIONS = {
     hostname: 'hooks.slack.com',
-    path: '/services/T6N1U8Z0U/B6MTAKYFM/9HCWE90lhMIj4ktMHghecRDG',
+    path: '<webhook-path>',
     method: 'POST',
 };
 
@@ -10,9 +10,23 @@ var POST_OPTIONS = {
 module.exports.demo_slack = (event, context, callback) => {
     console.log("Slackloggeren mottok event: ", JSON.stringify(event));
 
-    // Hent ut riktige deler av eventet og post til Slack
+    // Hent ut riktige deler av eventet
 
-    // Post til kanalen #general på Slack
+    // Post til Slack
+
+    var message = {
+        channel: 'din-kanal-her',
+        text: 'Din melding her'
+    };
+
+    var r = https.request(POST_OPTIONS, function(res) {
+            res.setEncoding('utf8');
+            res.on('data', function (data) {
+                context.succeed("Message Sent: " + data);
+            });
+    }).on("error", function(e) {context.fail("Failed: " + e);} );
+    r.write(util.format("%j", message));
+    r.end();
 
     callback(null, { statusCode: '200' });
 }
