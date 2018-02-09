@@ -12,7 +12,7 @@ I denne oppgaven skal vi lage en slik lambdafunksjon og konfigurere vår API Gat
 
 ### Authorizer på APIet
 
-Start med å utvide _events_-delen av todo-funksjonen vår til å inneholde en _authorizer_ for `POST` og `DELETE`-metoder. `GET` skal ikke ha en _authorizer_. I tillegg trenger du å definere en ny _function_. Se under [HTTP Endpoints with Custom Authorizers](https://serverless.com/framework/docs/providers/aws/events/apigateway#http-endpoints-with-custom-authorizers) for detaljer om hvordan dette gjøres.
+Start med å utvide _events_-delen til todo-funksjonen i `serverless.yml` til å inneholde en _authorizer_ for `POST` og `DELETE`-metoder. `GET` skal ikke ha en _authorizer_. I tillegg trenger du å definere en ny _function_ for autoriserings-lambdaen. Se under [HTTP Endpoints with Custom Authorizers](https://serverless.com/framework/docs/providers/aws/events/apigateway#http-endpoints-with-custom-authorizers) for detaljer om hvordan dette gjøres.
 
 > Hint: Du kan definere flere http-events for samme funksjon, og for hvert event definere en _authorizer_ eller ikke.
 
