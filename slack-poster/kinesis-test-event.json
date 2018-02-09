@@ -10,7 +10,7 @@
                 "ApproximateCreationDateTime": 1503238980,
                 "Keys": {
                     "text": {
-                        "S": "Halla"
+                        "S": "Todo-tekst"
                     },
                     "key": {
                         "S": "1996877e-bc7d-4a3a-94f9-bf369a986083"
@@ -18,7 +18,7 @@
                 },
                 "NewImage": {
                     "text": {
-                        "S": "Halla"
+                        "S": "Todo-tekst"
                     },
                     "key": {
                         "S": "1996877e-bc7d-4a3a-94f9-bf369a986083"
