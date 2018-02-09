@@ -36,3 +36,15 @@ Du kan ta utgangspunkt i koden under for Lambdafunksjonen din. Den logger innkom
 {% codesnippet "./lambda/slackposter.js" %} {% endcodesnippet %}
 
 
+### Teste manuelt
+
+Du vil nå ha to _functions_ i `serverless.yml`, la oss kalle dem `todos` og `slackposter`. Disse kan du teste manuelt på følgende vis:
+
+```
+sls invoke -f todos -p todo-test-event.json
+
+sls invoke -f slackposter -p kinesis-test-event.json
+
+```
+
+I branchen [`losningsforslag`](https://github.com/henriwi/serverless-workshop/tree/losningsforslag/slack-poster) finner du [`todo-test-event.json`](https://github.com/henriwi/serverless-workshop/blob/losningsforslag/slack-poster/todo-test-event.json) og [`kinesis-test-event.json`](https://github.com/henriwi/serverless-workshop/blob/losningsforslag/slack-poster/kinesis-test-event.json) som du kan bruke til testing.
