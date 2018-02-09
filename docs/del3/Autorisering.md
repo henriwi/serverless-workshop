@@ -1,6 +1,6 @@
-# Autentisering
+# Autorisering
 
-I denne oppgaven skal vi utvide applikasjonen vår med å legge på en enkel autentisering på APIet, slik at ikke hvem som helst kan legge til eller slette todoer. Det å hente ut todoer skal fortsatt være åpent. Vi bygger videre på Serverless Framework-configen i `serverless.yml`.
+I denne oppgaven skal vi utvide applikasjonen vår med å legge på en enkel autorisering på APIet, slik at ikke hvem som helst kan legge til eller slette todoer. Det å hente ut todoer skal fortsatt være åpent. Vi bygger videre på Serverless Framework-configen i `serverless.yml`.
 
 API Gateway kommer med støtte for å definere en såkalt _Custom Authorizer_, en egen lambdafunksjon som er ansvarlig for å kontrollere tilgangen til APIet. Når det kommer en request til APIet vil API Gateway først sjekke om det eksisterer en egen _authorizer_ for APIet. Hvis det er tilfelle vil API Gateway kalle lambdafunksjonen med et token som input som er hentet ut fra en spesifikk header i requesten. Lambdafunksjonen vil ta dette tokenet, validere det, og returnere en såkalt IAM policy, et JSON-objekt som sier om brukeren har tilgang til å kalle APIet eller ikke.
 
