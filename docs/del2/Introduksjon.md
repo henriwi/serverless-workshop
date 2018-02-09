@@ -1,10 +1,10 @@
 # Oppsett med Serverless framework
 
-I del 1 satte vi opp en fullstack webapplikasjon på AWS, kun ved bruk av ulike serverless-tjenester. Men hele applikasjon ble satt opp ved å manuelt gå gjennom webkonsollet til AWS. Ved å gjøre det på denne måten er det stor sannsynlighet for å gjøre feil, og det er ikke mulig å automatisere oppsettet. I denne delen av workshopen skal vi derfor sette opp applikasjonen fra del 1 på nytt, men med et verktøy som forbedrer arbeidsflyten.
+I del 1 satte vi opp en fullstack webapplikasjon på AWS kun ved bruk av ulike serverless-tjenester. Men hele applikasjon ble satt opp ved å manuelt gå gjennom webkonsollet til AWS. Ved å gjøre det på denne måten er det stor sannsynlighet for å gjøre feil, og det er ikke mulig å automatisere oppsettet. I denne delen av workshopen skal vi derfor sette opp applikasjonen fra del 1 på nytt, men med et verktøy som forbedrer arbeidsflyten.
 
-Det er flere verktøy som kan benyttes til dette, og vi har valgt å benytte Serverless Framework. Dette er et rammeverk som kan brukes til å konfigurere opp alle komponentene til applikasjonen vår. Det inkluderer også funksjonalitet for å teste lambdafunksjonene våre, lese logger og hente ut ulike metrikker. Serverless Framework støtter Microsoft Azure, IBM Open Whisk og Google Cloud Platform i tillegg til AWS.
+Det er flere verktøy som kan benyttes til dette, men vi har valgt å benytte Serverless Framework. Dette er et rammeverk som kan brukes til å konfigurere opp alle komponentene til applikasjonen vår. I tillegg inkluderer det funksjonalitet for å teste lambdafunksjonene våre, lese logger og hente ut ulike metrikker. Serverless Framework støtter Microsoft Azure, IBM Open Whisk og Google Cloud Platform i tillegg til AWS.
 
-> Servleress Framework er dokumentert [her](https://serverless.com/framework/docs/providers/aws/guide/intro/). Sjekk gjerne ut dokumentasjonen for å se mer om hva Serverless Framework er og de grunnleggende konspetene som rammeverket tilbyr. Hvis du står fast anbefaler vi å ta en titt i dokumentasjonen, der står det ofte svar på det du lurer på.
+> Servleress Framework er dokumentert [her](https://serverless.com/framework/docs/providers/aws/guide/intro/). Sjekk gjerne ut dokumentasjonen for å se mer om hva Serverless Framework er og de grunnleggende konseptene som rammeverket tilbyr. Hvis du står fast anbefaler vi å ta en titt i dokumentasjonen, der står det ofte svar på det du lurer på.
 >
 > Ikke vær redd for å ta tak i en av oss for å spørre!
 

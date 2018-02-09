@@ -1,13 +1,16 @@
 # DynamoDB
 
-Som nevnt i forrige steg blir konfigurasjonen som ligger i `serverless.yml` gjort om til en såkalt CloudFormation template og lastet opp til AWS. CloudFormation er en tjeneste som AWS tilbyr for å opprette og endre på ressurser basert på en konfigurasjonsfil. Alle ressursene lambdafunksjonene våre er avhengig av definerer vi ved å definere en såkalt CloudFormation-template i `serverless.yml`.
+Som nevnt i forrige steg blir konfigurasjonen som ligger i `serverless.yml` gjort om til en såkalt CloudFormation template og lastet opp til AWS. CloudFormation er en tjeneste som AWS tilbyr for å opprette og endre på ressurser basert på en konfigurasjonsfil. 
+
+I `serverless.yml` er det en egen `resources`-blokk hvor vi kan definere ressursene som applikasjonen vår er avhengig av. I denne blokken brukes vanlig CloudFormation-syntaks.
 
 - Sett opp en DynamoDB-tabell under `resources` i `serverless.yml`. Tabellen skal være helt lik den vi lagde i del 1
   - Tabellnavn i DynamoDB er unike, bruk derfor et annet navn enn i del 1
   - Attributtene til tabellene defineres i `AttributeDefinitions`
   - Hvilke attributter som skal være `PrimaryKey` og `SortKey` defineres under `KeySchema`. `PrimaryKey` er `HASH` og `SortKey` er `RANGE`.
+  - Husk å definere `ProvisionedThroughput`. `ReadCapacityUnits` og `WriteCapacityUnits` settes til 1.
 
->Hvordan ressurser blir definert med Serverless Framework kan du lese mer om [her](https://serverless.com/framework/docs/providers/aws/guide/resources/), og du kan lese mer om oppsett av DynamoDB-tabeller med CloudFormation [her](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html).
+>Eksempel på hvordan en DynamoDB-tabell blir definert med Serverless Framework og CloudFormation kan du lese om [her](https://serverless.com/framework/docs/providers/aws/guide/resources/).
 
 ## Deploy databasen
 Kjør `sls deploy` for å deploye tjenesten med det som er definert av ressurser hittil. Sjekk i webkonsollet at DynamoDB-tabellen din har blitt opprettet korrekt.
@@ -28,7 +31,7 @@ Kjør `sls deploy function -f <navn-på-funksjon>` for å deploye funksjonen til
 
 Nå som lambdafunksjonen er endret til å gå mot dynamodb-tabellen kan vi teste lambdafunksjonen på nytt og verifisere at vi får lagret data. Når man eksekverer en lambdafunksjon med Serverless Framework kan vi også sende med data som simulerer et event fra API Gateway.
 
-Kjør `sls invoke -f <din-funksjon> -d '{"body": "{\"key\":\"key\",\"text\":\"Delta på JavaZone\"}","httpMethod": "POST"}'`. Forventet output er:
+Kjør `sls invoke -f <din-funksjon> -d '{"body": "{\"key\":\"key\",\"text\":\"Delta på Serverless Workshop\"}","httpMethod": "POST"}'`. Forventet output er:
 
 ```
 {

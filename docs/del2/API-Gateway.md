@@ -12,9 +12,14 @@ Kjør `sls deploy` igjen, og kopier URLen som blir printet i terminalen under `e
 
 ```
 {
-	Items: [],
-	Count: 0,
-	ScannedCount: 0
+ "Items":[
+   {
+     "key": "key",
+     "text": "Delta på Serverless Workshop"
+   }
+  ],
+  "Count": 1,
+  "ScannedCount": 1
 }
 ```
 
