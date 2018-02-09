@@ -10,7 +10,7 @@ For å lage API-et til applikasjonen vår må vi gjøre tre ting:
 
 
 ### API med ressurs
-Start med å åpne API Gateway i AWS-konsollet
+Start med å åpne API Gateway i AWS-konsollet.
 - Opprett et nytt API med et valgfritt navn
 - I menyen, velg _Actions_ -> _Create Resource_ og bruk path `/todos`. Gi ressursen et valgfritt navn og klikk _Create resource_
 
@@ -18,7 +18,7 @@ Vi har nå laget en REST-ressurs. For å definere hvordan ressursen håndterer i
 
 ### Konfigurere action
 - Marker den nyopprettede ressursen og opprett en ny metode på denne med _Actions_ -> _Create method_
-- Velg `ANY` i dropdownen for å lage en handler for alle HTTP-metoder
+- Velg `ANY` i dropdownen for å lage en action for alle HTTP-metoder
 - Velg Integration type _Lambda Function_
 - Velg _Use Lambda Proxy integration_
 - Velg regionen der Lambdaen ligger og skriv inn navnet på lambdaen

@@ -7,17 +7,18 @@ Vi starter med å sette opp en enkel "Hello World"-lambda.
 Finn frem til Lambda i AWS-konsollet og klikk _"Get started now"_ eller _"Create a function"_.
 
 - I stedet for å velge et blueprint trykker du _"Author from scratch"_
-- Ikke sett opp noen triggere, dette gjør vi senere
 - Gi Lambdaen din et valgfritt navn
 - Velg runtime _Node.js 6.10_ (default)
+- Under _Role_, velg _Create new role from templates_
+  - Gi rollen et navn og velg _Simple Microservice permissions_ under Policy templates
+- Klikk _Create function_
+
+- Ikke sett opp noen triggere, det gjør vi senere
 - Koden i tekstboksen erstattes med følgende kode:
 
 {% codesnippet "./lambda/helloworld.js" %} {% endcodesnippet %}
 
-- Under _Role_, velg _Create new role from templates_
-  - Gi rollen et navn og velg _Simple Microservice permissions_ under Policy templates
-- La resten stå som default, klikk _Next_ og _Create function_
-- Test Lambdaen din ved å trykke på _Test_
+- Trykk _Save_ og så _Test_ for å teste Lambdaen
     - Erstatt eventet i tekstboksen med følgende event:
 
 {% codesnippet "./lambda/testevent.json" %} {% endcodesnippet %}

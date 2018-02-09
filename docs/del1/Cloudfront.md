@@ -51,7 +51,7 @@ Til slutt lager vi en behavior som ruter trafikk på visse ruter videre til API-
 - Velg origin til API-et under _Origin_
 - _Redirect HTTP to HTTPS_
 - Velg _Allowed HTTP Methods_ `GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE`
-- Under _Object caching_, velg _Customize_ og sett både Maximum og Default TTL til `0` for å disable caching
+- Under _Object caching_, velg _Customize_ og sett både _Maximum TT_ og _Default TTL_ til `0` for å disable caching
 - La resten stå som default og klikk _Create_
 
 Vi skrur altså av all caching på backenden. I et reellt scenario vil man justere caching-parametrene for de ulike tjenestene man legger bak Cloudfront.
