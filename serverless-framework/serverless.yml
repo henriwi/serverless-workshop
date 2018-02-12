@@ -7,18 +7,6 @@ provider:
 #  stage: dev
   region: eu-central-1
 
-  iamRoleStatements:
-    - Effect: "Allow"
-      Action:
-        # For å gi lambdaen tilgang til DynamoDB må den ha følgende tilganger
-        - dynamodb:DescribeTable
-        - dynamodb:Query
-        - dynamodb:Scan
-        - dynamodb:GetItem
-        - dynamodb:PutItem
-        - dynamodb:UpdateItem
-        - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:eu-central-1:*:*"
 
 functions:
   # Function-definisjon for Lambdaen vår
@@ -28,23 +16,3 @@ functions:
       - http: ANY todos
 
 
-resources:
-  Resources:
-    # Definisjon av DynamoDB-tabellen
-    Tabell:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: demo-sls
-        AttributeDefinitions:
-          - AttributeName: key
-            AttributeType: S
-          - AttributeName: text
-            AttributeType: S
-        KeySchema:
-          - AttributeName: key
-            KeyType: HASH
-          - AttributeName: text
-            KeyType: RANGE
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
