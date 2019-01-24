@@ -4,7 +4,6 @@ Finn frem til konsollet for DynamoDB og klikk _"Create table"_ for å lage en ny
 
 - Gi tabellen et valgfritt navn
 - Lag _Primary (partition) key_ med navnet`key`, type string
-- Lag _Sort key_ med navnet `text`, type string
 - Bruk ellers default settings
 - Gå tilbake til Lambdafunksjonen din og erstatt verdien av variabelen `TABLE` med navnet på tabellen din
 

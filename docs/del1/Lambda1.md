@@ -8,13 +8,13 @@ Finn frem til Lambda i AWS-konsollet og klikk _"Get started now"_ eller _"Create
 
 - I stedet for å velge et blueprint trykker du _"Author from scratch"_
 - Gi Lambdaen din et valgfritt navn
-- Velg runtime _Node.js 6.10_ (default)
+- Velg runtime _Node.js 8.10_ (default)
 - Under _Role_, velg _Create new role from templates_
   - Gi rollen et navn og velg _Simple Microservice permissions_ under Policy templates
 - Klikk _Create function_
 
 - Ikke sett opp noen triggere, det gjør vi senere
-- Koden i tekstboksen erstattes med følgende kode:
+- Koden i editoren erstattes med følgende kode:
 
 {% codesnippet "./lambda/helloworld.js" %} {% endcodesnippet %}
 
