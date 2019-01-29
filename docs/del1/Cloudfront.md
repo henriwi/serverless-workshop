@@ -25,8 +25,10 @@ Gå inn i Cloudfront-konsollet og opprett en ny distribusjon
 - Velg _Web_
 - _Origin Domain Name_: Velg originet i nedtrekkslista som svarer til din S3-bucket
 - La _Origin Path_ være blank
-- Velg _Restrict bucket access_ og _Create a New Identity_. Velg _Yes, Update Bucket Policy_
+- Under _Restrict bucket access_ velg _Yes_
+- Under _Grant Read Permissions on Bucket_ velg _Yes_
 - Velg _Redirect HTTP to HTTPS_
+- Under _Price Class_, velg _Use Only U.S., Canada and Europe_
 - Sett _Default Root Object_ til `index.html`
 - Skriv navnet ditt i _Comment_-feltet, så blir det lettere å finne igjen distribusjonen i menyen etterpå
 - La resten stå som default og klikk _Create Distribution_

@@ -6,8 +6,8 @@ I `serverless.yml` er det en egen `resources`-blokk hvor vi kan definere ressurs
 
 - Sett opp en DynamoDB-tabell under `resources` i `serverless.yml`. Tabellen skal være helt lik den vi lagde i del 1
   - Tabellnavn i DynamoDB er unike, bruk derfor et annet navn enn i del 1
-  - Attributtene til tabellene defineres i `AttributeDefinitions`
-  - Hvilke attributter som skal være `PrimaryKey` og `SortKey` defineres under `KeySchema`. `PrimaryKey` er `HASH` og `SortKey` er `RANGE`.
+  - Attributtene til tabellene defineres i `AttributeDefinitions`. Vi trenger to attributter, `key` og `text`, begge av typen `S` (string).
+  - Hvilke attributter som skal være `PrimaryKey` og `SortKey` defineres under `KeySchema`. `HASH` betyr `PrimaryKey` og `RANGE` betyr `SortKey`.
   - Husk å definere `ProvisionedThroughput`. `ReadCapacityUnits` og `WriteCapacityUnits` settes til 1.
 
 >Eksempel på hvordan en DynamoDB-tabell blir definert med Serverless Framework og CloudFormation kan du lese om [her](https://serverless.com/framework/docs/providers/aws/guide/resources/).
