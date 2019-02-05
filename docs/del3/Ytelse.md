@@ -106,7 +106,7 @@ Se Vegetas readme for mer informasjon om reporterne: https://github.com/tsenart/
 
 >Hvis man har satt «Provisioned read capacity units» til 1 vil man kunne gjøre
 én lesing i sekundet (pluss en viss mengde over i kortere perioder). Hvis man
-utfører en test med 40 spørringer i sekundet vil man da være over grensen og om
+utfører en test med 20 spørringer i sekundet vil man da være over grensen og om
 man kjører testen over en litt forlenget periode vil man se at spørringer over
 den konfigurerte grensen blir blokkert.
 
