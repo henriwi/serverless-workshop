@@ -87,7 +87,7 @@ Se Vegetas readme for mer informasjon om reporterne: https://github.com/tsenart/
 
 ## Første ytelsestest og utforsking
 
-- Sett i gang en ytelsestest med Vegeta på 40 spørringer i sekundet over 10
+- Sett i gang en ytelsestest med Vegeta på 20 spørringer i sekundet over 10
   minutter. Det kan ta noen minutter før man får utslag i grafene, så bare start
   kommandoen og gå videre til punktene under.
 - Gå deretter til DynamoDB-tabellen for applikasjonen din i AWS-konsollet og gå
@@ -121,7 +121,7 @@ Det er mulig å sette opp autoskalering av DynamoDB-tabellene med noen få steg:
 - Under _IAM Role_ velger du _New role: DynamoDBAutoscaleRole_
 - Aktiver konfigurasjonen med trykke _Save_-knappen
 
-Du kan nå kjøre ytelsestesten på 40 spørringer i sekundet igjen og følge med i
+Du kan nå kjøre ytelsestesten på 20 spørringer i sekundet igjen og følge med i
 Metrics-fanen for DynamoDB-tabellen. Du skal nå kunne se at den røde linjen for
 _Read capacity_-grafen justerer seg etter trykket av ytelsestesten.
   
